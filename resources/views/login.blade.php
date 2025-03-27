@@ -17,12 +17,16 @@
         </div>
             <p class="text-gray-900 mb-10">Enter your Credentials to access your account</p>
 
-            <div class="">
+            <form action="/login" method="POST">
+                @csrf
                 <div>
                     <label class="block text-gray-900 mb-2">Email address</label>
                     <input 
-                        type="email" placeholder="Enter your email" 
-                        class="w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        type="email" placeholder="Enter your email" name="email"
+                        class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        @error('email')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                 </div>
 
                 <div>
@@ -31,12 +35,15 @@
                         <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a>
                     </div>
                     <input 
-                        type="password" placeholder="Enter your password" 
-                        class="w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        type="password" placeholder="Enter your password" name="password"
+                        class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        @error('password')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                 </div>
 
                 <div class="mt-16">
-                    <button class="w-full bg-indigo-500 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
+                    <button type="submit" class="w-full bg-indigo-500 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
                         Login
                     </button>
                 </div>
@@ -54,7 +61,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
 
             <div class="mt-2 text-center">
                 <span class="text-gray-600">Don't have an account? </span>

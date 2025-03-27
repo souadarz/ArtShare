@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Signup</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -18,19 +18,26 @@
         <div class="flex justify-center">
             <p class="text-gray-900 mb-10">Get Strated Now</p>
         </div>
-            <div class="">
+            <form action="/register" method="POST">
+                @csrf
                 <div>
                     <label class="block text-gray-900 mb-2">Name</label>
                     <input 
-                        type="email" placeholder="Enter your name" 
-                        class="w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        type="text" placeholder="Enter your name" name="name"
+                        class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        @error('name')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                 </div>
 
                 <div>
                     <label class="block text-gray-900 mb-2 mt-6">Email address</label>
                     <input 
-                        type="email" placeholder="Enter your email" 
-                        class="w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        type="email" placeholder="Enter your email" name="email"
+                        class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        @error('email')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                 </div>
 
                 <div>
@@ -39,13 +46,16 @@
                         <!-- <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a> -->
                     </div>
                     <input 
-                        type="password" placeholder="Enter your password" 
-                        class="w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        type="password" placeholder="Enter your password" name="password"
+                        class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        @error('password')
+                            <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                 </div>
 
                 <div class="mt-16">
-                    <button class="w-full bg-indigo-600 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
-                        Login
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
+                        Signup
                     </button>
                 </div>
 
@@ -62,7 +72,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
 
             <div class="mt-2 text-center">
                 <span class="text-gray-600">Have an account </span>
@@ -73,7 +83,7 @@
         <div class="w-3/5 bg-white rounded-r-xl p-8 flex items-center justify-center relative overflow-hidden">
             <!-- <div class="absolute z-10 text-center"> -->
                 <div class="flex justify-center items-center">
-                    <svg width="600" height="330" viewBox="0 0 712 330" style="margin-right: 15px;" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <svg width="590" height="330" viewBox="0 0 712 330" style="margin-right: 15px;" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <rect width="712" height="360" fill="url(#pattern0_26_385)"/>
                         <defs>
                         <pattern id="pattern0_26_385" patternContentUnits="objectBoundingBox" width="1" height="1">
