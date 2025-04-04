@@ -35,8 +35,8 @@ class AuthController extends Controller
         ]);
         // dd($request);
 
-        // $FirstUser = User::count() === 0;
-        // $role =  $FirstUser ? 'admin' : 'user';
+        $FirstUser = User::count() === 0;
+        $role =  $FirstUser ? 'admin' : 'user';
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

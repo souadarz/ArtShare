@@ -76,7 +76,7 @@
 
             <div class="mt-2 text-center">
                 <span class="text-gray-600">Have an account </span>
-                <a href="#" class="text-indigo-800 hover:underline">Sign In</a>
+                <a href="/login" class="text-indigo-800 hover:underline">Sign In</a>
             </div>
         </div>
 

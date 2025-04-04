@@ -9,7 +9,7 @@
     <header class="container mx-auto px-4 py-4 flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center">
-            <h1 class="text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Art Share</h1>
+            <h1 class="ml-8 text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Art Share</h1>
         </div>
 
         <!-- Navigation Menu -->
@@ -23,17 +23,10 @@
             </ul>
         </nav>
 
-        <!-- Search Bar -->
         <div class="relative gap-2">
-            <!-- <input 
-                type="text" 
-                placeholder="Rechercher une oeuvre..." 
-                class="border border-gray-300 rounded-md px-3 py-2 pl-8 w-64 focus:outline-none focus:ring-2 focus:ring-gray-200"
-            />
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-2 top-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg> -->
-            <a href="" class="text-white px-6 py-3 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700">S'inscrire</a>
-            <a href="" class="text-white px-6 py-3 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700">Se Connecter</a>
+            <!-- <a href="" class="text-white px-6 py-3 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700">S'inscrire</a> -->
+            <a href="/register" class="px-6 py-3 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent border border-fuchsia-600">S'inscrire</a>
+            <!-- <a href="" class="px-6 py-3 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Se Connecter</a> -->
+            <a href="/login" class=" text-white px-4 py-3 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 ">Se Connecter</a>
         </div>
     </header>
