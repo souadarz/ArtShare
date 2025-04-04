@@ -1,7 +1,7 @@
 <x-header/>
 <div class="bg-white">
     <div class="w-full mx-auto">
-
+        <!-- Hero Section with Colorful Paint Splash -->
         <section class="relative h-[600px] flex items-center justify-center text-center overflow-hidden">
             <div class="absolute inset-0 z-0 opacity-100">
                 <img src="{{ asset('images/2304 1.png') }}" alt="image" 
@@ -77,3 +77,5 @@
         </section>
     </div>
 <x-footer/>
+<!-- </body>
+</html> -->
