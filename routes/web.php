@@ -20,3 +20,6 @@ Route::get('/dashboard', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/Œuvres', function () {
+    return view('pageDesŒuvres');
+});
