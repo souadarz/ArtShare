@@ -26,3 +26,9 @@ Route::get('/Œuvres', function () {
 Route::get('/detailsŒuvres', function () {
     return view('detailsDoeuvre');
 });
+Route::get('/dashboardArtist', function () {
+    return view('dashboardArtist');
+});
+Route::get('/createOeuvre', function () {
+    return view('createOeuvre');
+});
