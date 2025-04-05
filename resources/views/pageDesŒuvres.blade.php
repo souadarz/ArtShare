@@ -48,9 +48,10 @@
                             <h3 class="font-playfair text-xl font-bold mb-2">Réflexions Abstraites</h3>
                             <p class="text-gray-600">par Sophie Laurent</p>
                         </div>
-                        <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
+                        <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
                             Voir détails
-                        </button>
+                        </button> -->
+                        <a href="/detailsŒuvres" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
                     </div>
                 </div>
             </div>
@@ -65,9 +66,10 @@
                             <h3 class="font-playfair text-xl font-bold mb-2">Équilibre en Bronze</h3>
                             <p class="text-gray-600">par Marc Dubois</p>
                         </div>
-                        <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
+                        <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
                             Voir détails
-                        </button>
+                        </button> -->
+                        <a href="/detailsŒuvres" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
                     </div>
                 </div>
             </div>
@@ -82,9 +84,10 @@
                             <h3 class="font-playfair text-xl font-bold mb-2">Métaverse Dreams</h3>
                             <p class="text-gray-600">par Alex Chen</p>
                         </div>
-                        <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
+                        <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
                             Voir détails
-                        </button>
+                        </button> -->
+                        <a href="/detailsŒuvres" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
                     </div>
                 </div>
             </div>

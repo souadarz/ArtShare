@@ -23,3 +23,6 @@ Route::get('/home', function () {
 Route::get('/Œuvres', function () {
     return view('pageDesŒuvres');
 });
+Route::get('/detailsŒuvres', function () {
+    return view('detailsDoeuvre');
+});
