@@ -19,16 +19,19 @@ Route::get('/dashboard', function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/Œuvres', function () {
-    return view('pageDesŒuvres');
-});
+// Route::get('/oeuvres', function () {
+//     return view('pageDesŒuvres');
+// });
 Route::get('/detailsŒuvres', function () {
     return view('detailsDoeuvre');
 });
 Route::get('/dashboardArtist', function () {
     return view('dashboardArtist');
 });
-Route::get('/createOeuvre', function () {
-    return view('createOeuvre');
-});
+Route::get('/pageDesŒuvres',[OeuvreController::class, 'index'])->name('oeuvre.index');
+Route::get('/createOeuvre',[OeuvreController::class, 'create'])->name('oeuvre.create');
+Route::get('/oeuvre/{id}',[OeuvreController::class, 'show'])->name('oeuvre.show');
+// function () {
+//     return view('createOeuvre');
+// });
 Route::post('/storeOeuvre',[OeuvreController::class, 'store'])->name('oeuvre.store')->middleware('auth');

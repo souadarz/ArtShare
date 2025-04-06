@@ -4,17 +4,17 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             <div class="relative group">
-                <img src="{{ asset('images/artwork.jpg') }}" alt="Titre de l'œuvre"
+                <img src="{{ Storage::url($oeuvre->image) }}" alt="image de l'œuvre"
                     class="w-full h-auto rounded-lg shadow-lg transform transition duration-300 group-hover:scale-105">
             </div>
 
             <div>
                 <div class="flex justify-between">
-                    <h1 class="text-4xl font-bold text-gray-900">titre de l'oeuvre</h1>
-                    <span class="bg-pink-100 text-[#ec4899] px-3 py-1 rounded-full text-sm">peinture</span>
+                    <h1 class="text-4xl font-bold text-gray-900">{{ $oeuvre->title }}</h1>
+                    <span class="bg-pink-100 text-[#ec4899] px-3 py-1 rounded-full text-sm">{{ $oeuvre->category }}</span>
                 </div>
-                <p class="text-lg text-gray-600 mt-2">par <a href="#" class="text-purple-600 hover:underline">nom de l'Artiste</a></p>
-                <p class="mt-4 text-gray-700">la description de l'oeuvre</p>
+                <p class="text-lg text-gray-600 mt-2">par <a href="#" class="text-purple-600 hover:underline">{{ $oeuvre->user->name }}</a></p>
+                <p class="mt-4 text-gray-700">{{ $oeuvre->description }}</p>
 
                 <!-- <div class="mt-6 flex items-center space-x-4">
                         <span class="text-xl font-semibold text-gray-800">Prix : 1 200 €</span>

@@ -13,7 +13,8 @@ class OeuvreController extends Controller
      */
     public function index()
     {
-        //
+        $oeuvres = Oeuvre::all();
+        return view('pageDesŒuvres', compact('oeuvres'));
     }
 
     /**
@@ -21,7 +22,7 @@ class OeuvreController extends Controller
      */
     public function create()
     {
-        //
+        return view('createOeuvre');
     }
 
     /**
@@ -37,7 +38,6 @@ class OeuvreController extends Controller
             'image'=> 'required|image|mimes:jpeg,png,jpg'
         ]);
         $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
-        // dd(Auth::check(), Auth::id());
         $œuvre = Oeuvre::create([
             'title' => $request->title,
             'description' => $request->description,
@@ -45,7 +45,6 @@ class OeuvreController extends Controller
             'image'=> $imagepath,
             'user_id' => Auth::id()
         ]);
-
         // return redirect('/mesOeuvres');
         return redirect('/createOeuvre');
     }
@@ -55,7 +54,9 @@ class OeuvreController extends Controller
      */
     public function show(string $id)
     {
-        //
+        dd($id);
+        $oeuvre = Oeuvre::where('oeuvre_id',$id)->first();
+        return view('detailsDoeuvre', compact('oeuvre'));
     }
 
     /**

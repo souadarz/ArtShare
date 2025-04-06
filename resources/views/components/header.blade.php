@@ -7,12 +7,11 @@
 </head>
 <body>
     <header class="container mx-auto px-4 py-4 flex items-center justify-between">
-        <!-- Logo -->
+
         <div class="flex items-center">
             <h1 class="ml-8 text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Art Share</h1>
         </div>
 
-        <!-- Navigation Menu -->
         <nav>
             <ul class="flex space-x-6">
                 <li><a href="#" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium" style="color: #781c1c;">Accueil</a></li>
