@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OeuvreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login',[AuthController::class, 'showLogin'])->name('login');
 Route::get('/register', function () {
     return view('register');
 });
@@ -32,3 +31,4 @@ Route::get('/dashboardArtist', function () {
 Route::get('/createOeuvre', function () {
     return view('createOeuvre');
 });
+Route::post('/storeOeuvre',[OeuvreController::class, 'store'])->name('oeuvre.store')->middleware('auth');

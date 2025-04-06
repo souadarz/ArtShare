@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function showLogin(){
+        return view('login');
+    }
+
     public function login(Request $request){
         $request->validate([
             "email" => "required|email|exists:users,email|string",
@@ -23,8 +28,10 @@ class AuthController extends Controller
                 ]
             ];
         }
-        // $request->session()->regenerate();
-        return redirect('/dashboard');
+
+        Auth::login($user);
+        $request->session()->regenerate();
+        return redirect('/dashboardArtist');
     }
         
     public function register(Request $request){
@@ -41,9 +48,8 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            // 'role' => $FirstUser ? 'admin' : 'user',
             ]);
 
-        return redirect('/dashboard');
+        return redirect('/dashboardArtist');
     }
 }

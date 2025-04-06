@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Oeuvre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ŒuvreController extends Controller
+class OeuvreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,25 @@ class ŒuvreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category'=> 'required|string',
+            'image'=> 'required|image|mimes:jpeg,png,jpg'
+        ]);
+        $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
+        // dd(Auth::check(), Auth::id());
+        $œuvre = Oeuvre::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category'=> $request->category,
+            'image'=> $imagepath,
+            'user_id' => Auth::id()
+        ]);
+
+        // return redirect('/mesOeuvres');
+        return redirect('/createOeuvre');
     }
 
     /**

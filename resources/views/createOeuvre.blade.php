@@ -18,8 +18,8 @@
         <main class="mx-auto">
             <section class="mx-auto bg-white p-8 shadow-lg">
                 <!-- <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Exprimez votre art</h2> -->
-                <form action="#" method="POST" enctype="multipart/form-data" class="space-y-6">
-
+                <form action="{{ route('oeuvre.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                    @csrf
                     <div>
                         <label for="title" class="block text-sm font-medium text-gray-700">Titre de l’œuvre</label>
                         <input type="text" id="title" name="title" required
@@ -55,7 +55,6 @@
                         <button type="submit"
                             class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white px-6 py-3 rounded-full shadow-md hover:shadow-lg transition">Publier l’œuvre</button>
                     </div>
-
                 </form>
             </section>
         </main>
