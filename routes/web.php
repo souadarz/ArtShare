@@ -19,18 +19,17 @@ Route::get('/dashboard', function () {
 Route::get('/home', function () {
     return view('home');
 });
-// Route::get('/oeuvres', function () {
-//     return view('pageDesŒuvres');
-// });
-Route::get('/detailsŒuvres', function () {
-    return view('detailsDoeuvre');
+Route::get('/profile', function () {
+    return view('profile');
 });
+
 Route::get('/dashboardArtist', function () {
     return view('dashboardArtist');
 });
 Route::get('/pageDesŒuvres',[OeuvreController::class, 'index'])->name('oeuvre.index');
 Route::get('/createOeuvre',[OeuvreController::class, 'create'])->name('oeuvre.create');
-Route::get('/oeuvre/{id}',[OeuvreController::class, 'show'])->name('oeuvre.show');
+Route::get('/oeuvres/{id}', [OeuvreController::class, 'show'])->name('detailsŒuvres');
+
 // function () {
 //     return view('createOeuvre');
 // });

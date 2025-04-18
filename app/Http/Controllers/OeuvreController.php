@@ -46,7 +46,7 @@ class OeuvreController extends Controller
             'user_id' => Auth::id()
         ]);
         // return redirect('/mesOeuvres');
-        return redirect('/createOeuvre');
+        return redirect('/pageDesŒuvres');
     }
 
     /**
@@ -54,8 +54,9 @@ class OeuvreController extends Controller
      */
     public function show(string $id)
     {
-        dd($id);
-        $oeuvre = Oeuvre::where('oeuvre_id',$id)->first();
+        // $oeuvre = Oeuvre::where('id',$id)->first();
+        $oeuvre = Oeuvre::findOrFail($id);
+        // dd($oeuvre);
         return view('detailsDoeuvre', compact('oeuvre'));
     }
 
