@@ -4,7 +4,7 @@
 
         <section class="relative h-[600px] flex items-center justify-center text-center overflow-hidden">
             <div class="absolute inset-0 z-0 opacity-100">
-                <img src="{{ asset('images/2304 1.png') }}" alt="image" 
+                <img src="{{ asset('images/2304 1.png') }}" alt="image"
                         class="w-full h-64 md:h-[550px] object-cover rounded-lg shadow-lg"/>
             </div>
             
@@ -21,11 +21,11 @@
 
             <!-- L'Art Abstrait-->
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 mb-8 md:mb-12">
-                <div class="w-full md:w-7/12 ml-8 mr-8">
+                <div class="w-full md:w-7/12 ml-8">
                     <img src="{{ asset('images/art-8324770_1280.jpg') }}" alt="Art Abstrait Moderne" 
                         class="w-full h-64 md:h-[300px] object-cover rounded-lg shadow-lg"/>
                 </div>
-                <div class="w-full md:w-1/3 text-center md:text-left">
+                <div class="w-full md:w-1/3 text-center md:text-left mr-8">
                     <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-4">L'Art Abstrait Moderne</h3>
                     <p class="text-sm md:text-base text-gray-600">Une exploration des formes et couleurs contemporaines</p>
                 </div>
@@ -33,7 +33,7 @@
 
             <!-- Sculptures -->
             <div class="flex flex-col-reverse md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 mb-8 md:mb-12 mr15">
-                <div class="w-full md:w-1/3 text-center md:text-right">
+                <div class="w-full md:w-1/3 text-center md:text-left ml-8">
                     <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-4">Sculptures</h3>
                     <p class="text-sm md:text-base text-gray-600">La matière transformée en émotion. Sculpter, c’est capturer l’instant dans l’éternité de la matière.</p>
                 </div>
@@ -45,11 +45,11 @@
 
             <!-- La Photographie -->
             <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-                <div class="w-full md:w-7/12 ml-8 mr-8">
+                <div class="w-full md:w-7/12 ml-8">
                     <img src="{{ asset('images/sunset-1853871_1280.jpg') }}" alt="Photographie" 
                         class="w-full h-64 md:h-[300px] object-cover rounded-lg shadow-lg"/>
                 </div>
-                <div class="w-full md:w-1/3 text-center md:text-left">
+                <div class="w-full md:w-1/3 text-center md:text-left mr-8">
                     <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-4">La Photographie</h3>
                     <p class="text-sm md:text-base text-gray-600">L'instant, transformant la lumière et les ombres en une émotion intemporelle.</p>
                 </div>
@@ -57,7 +57,7 @@
 
               <!-- art numérique -->
               <div class="flex flex-col-reverse md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8 mb-8 md:mb-12 mr15">
-                <div class="w-full md:w-1/3 text-center md:text-right">
+                <div class="w-full md:w-1/3 text-center md:text-left ml-8">
                     <h3 class="text-xl md:text-2xl font-semibold mb-2 md:mb-4">Art Numérique</h3>
                     <p class="text-sm md:text-base text-gray-600">quand la technologie et la créativité fusionnent pour donner vie à l’imaginaire.</p>
                 </div>

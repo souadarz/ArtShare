@@ -52,47 +52,11 @@
                         <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
                             Voir détails
                         </button> -->
-                        <a href="/detailsŒuvres" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
+                        <a href="{{ route('detailsŒuvres', $oeuvre->id) }}" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
                     </div>
                 </div>
             </div>
             @endforeach
-
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div class="aspect-w-4 aspect-h-3">
-                    <img src="{{ asset('images/img2.jpg') }}" alt="Sculpture" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="font-playfair text-xl font-bold mb-2">Équilibre en Bronze</h3>
-                            <p class="text-gray-600">par Marc Dubois</p>
-                        </div>
-                        <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
-                            Voir détails
-                        </button> -->
-                        <a href="/detailsŒuvres" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div class="aspect-w-4 aspect-h-3">
-                    <img src="{{ asset('images/img4.jpg') }}" alt="Art numérique" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="font-playfair text-xl font-bold mb-2">Métaverse Dreams</h3>
-                            <p class="text-gray-600">par Alex Chen</p>
-                        </div>
-                        <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
-                            Voir détails
-                        </button> -->
-                        <a href="/detailsŒuvres" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
-                    </div>
-                </div>
-            </div>
 
         </div>
 
