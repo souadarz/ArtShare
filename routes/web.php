@@ -29,6 +29,12 @@ Route::get('/dashboardArtist', function () {
 Route::get('/pageDesŒuvres',[OeuvreController::class, 'index'])->name('oeuvre.index');
 Route::get('/createOeuvre',[OeuvreController::class, 'create'])->name('oeuvre.create');
 Route::get('/oeuvres/{id}', [OeuvreController::class, 'show'])->name('detailsŒuvres');
+Route::get('/MesOeuvres',[OeuvreController::class, 'getoeuvresDartist'])->name('oeuvresDartist');
+Route::get('/editOeuvre/{id}',[OeuvreController::class, 'edit'])->name('oeuvre.edit');
+Route::post('/updateOeuvre/{oeuvre}',[OeuvreController::class, 'update'])->name('oeuvre.update');
+Route::get('/deleteOeuvre/{id}',[OeuvreController::class, 'destroy'])->name('oeuvre.delete');
+
+
 
 // function () {
 //     return view('createOeuvre');

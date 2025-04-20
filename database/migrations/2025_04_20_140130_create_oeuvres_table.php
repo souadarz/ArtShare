@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('oeuvres', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
-            $table->string('category');
+            $table->text('description');
             $table->string('image');
+            $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

@@ -36,16 +36,16 @@
     <section class="mb-12">
         <h3 class="text-2xl font-bold mb-6">Actions</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a href="/createOeuvre"
+            <a href="{{ route('oeuvresDartist') }}"
                 class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white text-center py-8 px-4 rounded-lg shadow-lg hover:shadow-xl transition group">
                 <div class="text-4xl mb-2"></div>
-                <h4 class="text-xl font-semibold mb-2">Ajouter une œuvre</h4>
+                <h4 class="text-xl font-semibold mb-2">Mes œuvres</h4>
                 <p class="text-sm opacity-80">Partagez votre nouvelle création avec le monde</p>
             </a>
             <a href="#"
                 class="bg-white text-purple-700 border border-purple-200 text-center py-8 px-4 rounded-lg shadow hover:shadow-xl transition group">
                 <div class="text-4xl mb-2"></div>
-                <h4 class="text-xl font-semibold mb-2">publier un tutoriel</h4>
+                <h4 class="text-xl font-semibold mb-2">Mes tutoriel</h4>
                 <p class="text-sm text-gray-600"></p>
             </a>
         </div>

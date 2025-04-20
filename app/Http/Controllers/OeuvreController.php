@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Oeuvre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class OeuvreController extends Controller
      */
     public function create()
     {
-        return view('createOeuvre');
+        $categories = Category::all();
+        return view('createOeuvre', compact('categories'));
     }
 
     /**
@@ -34,19 +36,19 @@ class OeuvreController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'category'=> 'required|string',
+            'category_id'=> 'required|integer',
             'image'=> 'required|image|mimes:jpeg,png,jpg'
         ]);
         $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
         $œuvre = Oeuvre::create([
             'title' => $request->title,
             'description' => $request->description,
-            'category'=> $request->category,
+            'category_id'=> $request->category_id,
             'image'=> $imagepath,
             'user_id' => Auth::id()
         ]);
-        // return redirect('/mesOeuvres');
-        return redirect('/pageDesŒuvres');
+
+        return redirect(route('oeuvresDartist'));
     }
 
     /**
@@ -60,20 +62,48 @@ class OeuvreController extends Controller
         return view('detailsDoeuvre', compact('oeuvre'));
     }
 
+    public function getoeuvresDartist(){
+        $oeuvres = Oeuvre::where('user_id', Auth::id())->get();
+        return view('oeuvresDartist', compact('oeuvres'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $oeuvre = Oeuvre::findOrFail($id);
+        $categories = Category::all();
+        return view('editOeuvre', compact('oeuvre', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Oeuvre $oeuvre)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id'=> 'required|string',
+            'image'=> 'image|mimes:jpeg,png,jpg'
+        ]);
+        // $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
+
+        if ($request->hasFile('image')) {
+            $imagepath = $request->file('image')->store('images', 'public');
+            $oeuvre->image = $imagepath; 
+        }
+
+        $oeuvre->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id'=> $request->category_id,
+            // 'image'=> $imagepath,
+            'user_id' => Auth::id()
+        ]);
+
+        return redirect(route('oeuvresDartist'));
     }
 
     /**
@@ -81,6 +111,8 @@ class OeuvreController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       $oeuvre = Oeuvre::findOrFail($id);
+       $oeuvre->delete();
+       return redirect(route('oeuvreOfArtist'));
     }
 }
