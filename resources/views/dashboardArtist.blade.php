@@ -3,7 +3,7 @@
 
     <section class="mb-12 flex flex-col md:flex-row items-center justify-between">
         <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
-            <h2 class="text-4xl font-bold mb-4">nom de l'artist</h2>
+            <h2 class="text-4xl font-bold mb-4">{{ $user->name }}</h2>
             <p class="text-lg text-gray-600 mb-6">Exprimez votre vision, exposez vos œuvres, et inspirez le monde entier.</p>
             <a href="#" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Modifier mon profil</a>
         </div>

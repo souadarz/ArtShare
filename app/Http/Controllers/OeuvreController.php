@@ -18,6 +18,12 @@ class OeuvreController extends Controller
         return view('pageDesŒuvres', compact('oeuvres'));
     }
 
+    public function pageDashbordArtist () {
+        $user = Auth::user();
+        // dd($user);
+        return view('dashboardArtist', compact('user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -39,8 +45,9 @@ class OeuvreController extends Controller
             'category_id'=> 'required|integer',
             'image'=> 'required|image|mimes:jpeg,png,jpg'
         ]);
+        // dd('test');
         $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
-        $œuvre = Oeuvre::create([
+        $oeuvre = Oeuvre::create([
             'title' => $request->title,
             'description' => $request->description,
             'category_id'=> $request->category_id,
@@ -56,9 +63,7 @@ class OeuvreController extends Controller
      */
     public function show(string $id)
     {
-        // $oeuvre = Oeuvre::where('id',$id)->first();
-        $oeuvre = Oeuvre::findOrFail($id);
-        // dd($oeuvre);
+        $oeuvre = Oeuvre::with('comments')->where('id',$id)->first();
         return view('detailsDoeuvre', compact('oeuvre'));
     }
 
