@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OeuvreController;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,5 @@ Route::post('/storeOeuvre',[OeuvreController::class, 'store'])->name('oeuvre.sto
 
 
 Route::post('/like/{oeuvre}',[LikeController::class, 'store'])->name('like.store');
+
+Route::post('/comment/{oeuvre}',[CommentController::class, 'store'])->name('comment.store');

@@ -63,9 +63,7 @@ class OeuvreController extends Controller
      */
     public function show(string $id)
     {
-        // $oeuvre = Oeuvre::where('id',$id)->first();
-        $oeuvre = Oeuvre::findOrFail($id);
-        // dd($oeuvre);
+        $oeuvre = Oeuvre::with('comments')->where('id',$id)->first();
         return view('detailsDoeuvre', compact('oeuvre'));
     }
 

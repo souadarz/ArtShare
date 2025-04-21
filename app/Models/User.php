@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function likes(){
         return $this->belongsToMany(Oeuvre::class, 'likes');
     }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }
