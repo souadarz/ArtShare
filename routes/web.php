@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OeuvreController;
@@ -26,6 +27,10 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
+Route::get('/tutoriel', function () {
+    return view('tutoriels');
+});
+
 Route::get('/dashboardArtist',[OeuvreController::class, 'pageDashbordArtist']);
 Route::get('/pageDesŒuvres',[OeuvreController::class, 'index'])->name('oeuvre.index');
 Route::get('/createOeuvre',[OeuvreController::class, 'create'])->name('oeuvre.create');
@@ -40,3 +45,8 @@ Route::post('/storeOeuvre',[OeuvreController::class, 'store'])->name('oeuvre.sto
 Route::post('/like/{oeuvre}',[LikeController::class, 'store'])->name('like.store');
 
 Route::post('/comment/{oeuvre}',[CommentController::class, 'store'])->name('comment.store');
+
+
+Route::get('/categories',[CategoryController::class, 'index'])->name('categories.index');
+Route::get('/Categories/create',[CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categories/store',[CategoryController::class, 'store'])->name('categories.store');
