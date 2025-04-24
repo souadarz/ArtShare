@@ -72,7 +72,7 @@
             <div class="max-w-2xl mx-auto">
                 <h2 class="text-3xl font-bold mb-6">Notre Vision</h2>
                 <p class="text-lg text-gray-700 mb-8">ArtShare est plus qu'une simple galerie d'art. C'est un espace où l'art prend vie, où chaque œuvre raconte une histoire unique.</p>
-                <a href="#" class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition">En savoir plus</a>
+                <a href="/notreVision" class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white px-6 py-3 rounded-full hover:bg-pink-600 transition">En savoir plus</a>
             </div>
         </section>
     </div>

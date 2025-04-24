@@ -15,8 +15,8 @@
                 @foreach($categories as $category)
                 <div class="category_box flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-6 shadow hover:shadow-md transition" data-category-id="{{ $category->id }}">
                     <div class="flex justify-between items-start mb-6">
-                        <a href="#" class="text-sm text-blue-600 hover:underline edit_category_button">Modifier</a>
-                        <form action="" method="POST" onsubmit="return confirm('Confirmer la suppression ?');">
+                        <a href="" class="text-sm text-blue-600 hover:underline edit_category_button">Modifier</a>
+                        <form action="{{ route('categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-sm text-red-600 hover:underline">Supprimer</button>
@@ -80,12 +80,12 @@
             title.innerText = 'Modifier la Catégorie';
             nameInput.value = category.name;
             idInput.value = category.id;
-            form.action = `/admin/categories/update/${category.id}`;
+            form.action = `categories/update/{category}`;
         } else {
             title.innerText = 'Ajouter une Catégorie';
             nameInput.value = '';
             idInput.value = '';
-            form.action = `/admin/categories/store`;
+            form.action = `/categories/store`;
         }
     }
 

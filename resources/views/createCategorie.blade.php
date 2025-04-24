@@ -60,12 +60,12 @@
             title.innerText = 'Modifier la Catégorie';
             nameInput.value = category.name;
             idInput.value = category.id;
-            form.action = `/admin/categories/update/${category.id}`;
+            form.action = `/categories/update/{category}`;
         } else {
             title.innerText = 'Ajouter une Catégorie';
             nameInput.value = '';
             idInput.value = '';
-            form.action = `/admin/categories/store`;
+            form.action = `/categories/store`;
         }
     }
 
