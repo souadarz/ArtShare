@@ -62,4 +62,7 @@ Route::delete('/categories/destroy/{category}',[CategoryController::class, 'dest
 Route::get('/tutoriels/create',[TutorielController::class, 'create'])->name('tutoriels.create');
 Route::get('/MesTutoriels',[TutorielController::class, 'getTutorielDartist'])->name('tutorielsDartist');
 Route::post('/tutoriels/store',[TutorielController::class, 'store'])->name('tutoriels.store');
-
+Route::get('/tutoriels/show/{tutoriel}',[TutorielController::class, 'show'])->name('tutoriels.show');
+Route::put('/tutoriels/update/{tutoriel}',[TutorielController::class, 'update'])->name('tutoriels.update');
+Route::get('/tutoriels/{tutoriel}',[TutorielController::class, 'edit'])->name('tutoriels.edit');
+Route::delete('/tutoriels/destroy/{tutoriel}',[TutorielController::class, 'destroy'])->name('tutoriels.destroy');

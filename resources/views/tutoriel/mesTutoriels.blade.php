@@ -1,6 +1,6 @@
 <x-header />
 
-<body class="bg-gray-100 text-gray-900">
+<div class="bg-gray-100 text-gray-900">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-gray-900 text-center mb-8">Tutoriels et Ressources</h1>
 
@@ -16,11 +16,21 @@
                     <div class="p-4">
                         <h3 class="text-lg font-semibold">{{ $tutoriel->title }}</h3>
                         <!-- <p class="text-sm text-gray-600">Apprenez les bases pour débuter en peinture acrylique.</p> -->
-                        <a href="#" class="text-purple-600 hover:underline">Lire plus</a>
+                        <div class="flex space-x-2">
+                            <a href="{{ route('tutoriels.edit', $tutoriel) }}" class="px-3 py-1 bg-white-500 text-black rounded-full hover:bg-pink-200 transition-colors">Modifier</a>
+                            <form action="{{ route('tutoriels.destroy', $tutoriel) }}" method="POST" class="inline" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce tutoriel?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="right-5 px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">Supprimer</button>
+                            </form>
+                        </div>
+                        <a href="{{ route('tutoriels.show', $tutoriel) }}" class="text-purple-600 hover:underline">Lire plus</a>
                     </div>
                 </div>
                 @endforeach
             </div>
         </section>
     </div>
-    <x-footer />
+</div>
+
+<x-footer />

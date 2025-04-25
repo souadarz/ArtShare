@@ -5,34 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Ajouter un Tutoriel</title>
+    <title></title>
 </head>
 
 <body>
     <div class="m-8 rounded-lg w-[850px] mx-auto">
         <header class="bg-white shadow-md py-6 px-8 flex items-center justify-between">
-            <h1 class="text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Ajouter un Tutoriel</h1>
+            <h1 class="text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Modifier un Tutoriel</h1>
             <a href="/tutorielsDartist" class="text-sm text-purple-600 hover:underline">Retour au Dashboard</a>
         </header>
 
         <main class="mx-auto">
             <section class="mx-auto bg-white p-8 shadow-lg">
-                <form action="{{ route('tutoriels.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <form action="{{ route('tutoriels.update', $tutoriel) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
+                    @method('PUT')
                     <div>
                         <label for="title" class="block text-sm font-medium text-gray-700">Titre du tutoriel</label>
-                        <input type="text" id="title" name="title" required
+                        <input type="text" id="title" name="title" required value="{{ $tutoriel->title }}"
                             class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-purple-500 focus:border-purple-500">
                     </div>
 
                     <div>
                         <label for="content" class="block text-sm font-medium text-gray-700">Contenu du tutorial</label>
                         <textarea id="editor" name="content" rows="8"
-                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500"></textarea>
+                            class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">{{ $tutoriel->content }}</textarea>
                     </div>
 
-                    <div>
-                        <label for="image" class="block text-sm font-medium text-gray-700">Image illustrative</label>
+                    <div class="h-96 flex-shrink-0">
+                        <label for="image" class="block text-sm font-medium text-gray-700">Image actuelle</label>
+                        <img src="{{Storage::url($tutoriel->image)}}" alt="Image actuelle" class="mt-4 w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class=" mt-16 ">
+                        <label for="image" class="block text-sm font-medium text-gray-700">Téléchargez une nouvelle image pour la remplacer</label>
                         <input type="file" id="image" name="image" accept="image/*" required
                             class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100">
                     </div>
@@ -79,9 +84,9 @@
             }
         });
 
-        document.querySelector('form').addEventListener('submit', function() {
-            tinymce.triggerSave();
-        });
+        // document.querySelector('form').addEventListener('submit', function() {
+        //     tinymce.triggerSave();
+        // });
     });
 </script>
 

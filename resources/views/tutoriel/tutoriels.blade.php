@@ -1,6 +1,6 @@
 <x-header />
 
-<body class="bg-gray-100 text-gray-900">
+<div class="bg-gray-100 text-gray-900">
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-gray-900 text-center mb-8">Tutoriels et Ressources</h1>
 
@@ -21,4 +21,5 @@
             </div>
         </section>
     </div>
+</div>
     <x-footer />

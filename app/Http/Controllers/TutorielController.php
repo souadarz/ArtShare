@@ -34,7 +34,7 @@ class TutorielController extends Controller
         // dd($request);
         $request->validate([
             'title' => 'required|string|max:255',
-            'content' => 'required|string',
+            'content' => 'required',
             'image'=> 'required|image|mimes:jpeg,png,jpg'
         ]);
 
@@ -55,12 +55,12 @@ class TutorielController extends Controller
      */
     public function show(tutoriel $tutoriel)
     {
-        
+       return view('tutoriel.tutorielShow', compact('tutoriel'));
     }
 
     public function getTutorielDartist(){
         $tutoriels = Tutoriel::where('user_id', Auth::id())->get();
-        return view('mesTutoriels', compact('tutoriels'));
+        return view('tutoriel.mesTutoriels', compact('tutoriels'));
     }
 
     /**
@@ -68,7 +68,7 @@ class TutorielController extends Controller
      */
     public function edit(tutoriel $tutoriel)
     {
-        //
+        return view('tutoriel.editTutoriel', compact('tutoriel'));
     }
 
     /**
@@ -76,7 +76,25 @@ class TutorielController extends Controller
      */
     public function update(Request $request, tutoriel $tutoriel)
     {
-        //
+        // dd($request);
+            $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required',
+            'image'=> 'image|mimes:jpeg,png,jpg'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagepath = $request->file('image')->store('images', 'public');
+            $tutoriel->image = $imagepath;
+        }
+
+        $tutoriel->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'image' => $imagepath,
+        ]);
+
+        return redirect( route('tutorielsDartist'));
     }
 
     /**
@@ -84,6 +102,7 @@ class TutorielController extends Controller
      */
     public function destroy(tutoriel $tutoriel)
     {
-        //
+        $tutoriel->delete();
+        return redirect( route('tutorielsDartist'));
     }
 }
