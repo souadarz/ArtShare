@@ -42,7 +42,7 @@
                 <h4 class="text-xl font-semibold mb-2">Mes œuvres</h4>
                 <p class="text-sm opacity-80">Partagez votre nouvelle création avec le monde</p>
             </a>
-            <a href="#"
+            <a href="{{ route('tutorielsDartist') }}"
                 class="bg-white text-purple-700 border border-purple-200 text-center py-8 px-4 rounded-lg shadow hover:shadow-xl transition group">
                 <div class="text-4xl mb-2"></div>
                 <h4 class="text-xl font-semibold mb-2">Mes tutoriel</h4>

@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\OeuvreController;
+use App\Http\Controllers\TutorielController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,7 +28,7 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/tutoriel', function () {
+Route::get('/tutoriels', function () {
     return view('tutoriels');
 });
 
@@ -56,3 +57,9 @@ Route::get('/categories',[CategoryController::class, 'index'])->name('categories
 Route::post('/categories/store',[CategoryController::class, 'store'])->name('categories.store');
 Route::post('/categories/update/{category}',[CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/destroy/{category}',[CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
+Route::get('/tutoriels/create',[TutorielController::class, 'create'])->name('tutoriels.create');
+Route::get('/MesTutoriels',[TutorielController::class, 'getTutorielDartist'])->name('tutorielsDartist');
+Route::post('/tutoriels/store',[TutorielController::class, 'store'])->name('tutoriels.store');
+

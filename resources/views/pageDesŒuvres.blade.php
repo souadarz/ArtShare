@@ -47,7 +47,7 @@
                     <div >
                         <h3 class="font-playfair text-xl font-bold mb-2">{{ $oeuvre->title }}</h3>
                         <div class="flex justify-between items-start mb-4">
-                            <p class="text-gray-600 py-2">@ {{ $oeuvre->user->name }}</p>
+                            <p class="text-pink-400 font-bold py-2">@ {{ $oeuvre->user->name }}</p>
                             <a href="{{ route('detailsŒuvres', $oeuvre->id) }}" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">Voir détails</a>
                         </div>
                         <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">

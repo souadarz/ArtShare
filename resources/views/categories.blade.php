@@ -5,9 +5,9 @@
 
             <div class="mb-8 flex items-center justify-between">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Gestion des Catégories</h2>
-                <a href="" id="add_categorie_button" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-full transition">
+                <button id="add_categorie_button" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-full transition cursur-pointer">
                     + Ajouter Catégorie
-                </a>
+                </button>
 
             </div>
 
@@ -15,7 +15,9 @@
                 @foreach($categories as $category)
                 <div class="category_box flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-6 shadow hover:shadow-md transition" data-category-id="{{ $category->id }}">
                     <div class="flex justify-between items-start mb-6">
-                        <a href="" class="text-sm text-blue-600 hover:underline edit_category_button">Modifier</a>
+                        <button class="text-sm text-blue-600 hover:underline edit_category_button"
+                            data-id="{{ $category->id }}"
+                            data-name="{{ $category->name }}">Modifier</button>
                         <form action="{{ route('categories.destroy', $category) }}" method="POST" onsubmit="return confirm('Confirmer la suppression ?');">
                             @csrf
                             @method('DELETE')
@@ -75,12 +77,12 @@
 
     function openModal(mode = 'create', category = null) {
         document.getElementById('category_modal').classList.remove('hidden');
-        
+
         if (mode === 'edit' && category) {
             title.innerText = 'Modifier la Catégorie';
             nameInput.value = category.name;
             idInput.value = category.id;
-            form.action = `categories/update/{category}`;
+            form.action = `categories/update/${category.id}`;
         } else {
             title.innerText = 'Ajouter une Catégorie';
             nameInput.value = '';
@@ -88,6 +90,16 @@
             form.action = `/categories/store`;
         }
     }
+
+    document.querySelectorAll('.edit_category_button').forEach(button => {
+        button.addEventListener('click', () => {
+            const category = {
+                id: button.dataset.id,
+                name: button.dataset.name
+            };
+            openModal('edit', category);
+        });
+    });
 
     function closeModal() {
         document.getElementById('category_modal').classList.add('hidden');
