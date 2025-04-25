@@ -44,15 +44,15 @@
                          class="w-full h-full object-cover">
                 </div>
                 <div class="p-6">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="font-playfair text-xl font-bold mb-2">{{ $oeuvre->title }}</h3>
-                            <p class="text-gray-600">par {{ $oeuvre->user->name }}</p>
+                    <div >
+                        <h3 class="font-playfair text-xl font-bold mb-2">{{ $oeuvre->title }}</h3>
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-pink-400 font-bold py-2">@ {{ $oeuvre->user->name }}</p>
+                            <a href="{{ route('detailsŒuvres', $oeuvre->id) }}" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">Voir détails</a>
                         </div>
                         <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
                             Voir détails
                         </button> -->
-                        <a href="{{ route('detailsŒuvres', $oeuvre->id) }}" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">Voir détails</a>
                     </div>
                 </div>
             </div>
