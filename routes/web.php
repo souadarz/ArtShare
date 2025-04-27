@@ -28,12 +28,16 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/tutoriels', function () {
-    return view('tutoriels');
-});
+// Route::get('/tutoriels', function () {
+//     return view('tutoriels');
+// });
 
 Route::get('/notreVision', function () {
     return view('notreVision');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboardAdmin');
 });
 
 Route::get('/dashboardArtist',[OeuvreController::class, 'pageDashbordArtist']);

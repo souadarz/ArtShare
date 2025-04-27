@@ -1,5 +1,5 @@
 <x-header></x-header>
-<main class="container mx-auto px-4 py-10">
+<div class="container mx-auto px-4 py-10">
 
     <section class="mb-12 flex flex-col md:flex-row items-center justify-between">
         <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
@@ -11,7 +11,6 @@
             <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-200">
                 <img src="/api/placeholder/400/400" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
-                    <span class="text-xl">✏️</span>
                 </div>
             </div>
         </div>
@@ -57,5 +56,5 @@
         </blockquote>
         <div class="mt-4 text-purple-700">— André Malraux</div>
     </section>
-</main>
+</div>
 <x-footer />

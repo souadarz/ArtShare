@@ -42,7 +42,7 @@
                 <img src="/api/placeholder/400/400" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div
                     class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
-                    <span class="text-xl">✏️</span>
+                    <!-- <span class="text-xl">✏️</span> -->
                 </div>
             </div>
         </div>
