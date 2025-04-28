@@ -18,7 +18,7 @@
        <!-- statistiques -->
     <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
-            <h3 class="text-2xl font-semibold text-purple-700">12</h3>
+            <h3 class="text-2xl font-semibold text-purple-700">{{ $users->count() }}</h3>
             <p class="text-gray-500 mt-2">Nombres d'utilisateurs</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
@@ -26,11 +26,11 @@
             <p class="text-gray-500 mt-2">Nonmbres d'attistes</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
-            <h3 class="text-2xl font-semibold text-purple-600">8</h3>
+            <h3 class="text-2xl font-semibold text-purple-600">{{ $oeuvres->count() }}</h3>
             <p class="text-gray-500 mt-2">Œuvres publiées</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
-            <h3 class="text-2xl font-semibold text-pink-600">4</h3>
+            <h3 class="text-2xl font-semibold text-pink-600">{{ $categories->count() }}</h3>
             <p class="text-gray-500 mt-2">Catégories</p>
         </div>
     </section>
@@ -44,7 +44,7 @@
                 <h4 class="text-xl font-semibold mb-2">Ajouter un utilisateur</h4>
                 <p class="text-sm opacity-80">Créer un nouveau compte utilisateur</p>
             </a>
-            <a href="#"
+            <a href="{{ route('categories.index') }}"
                 class="bg-white text-purple-700 border border-purple-200 text-center py-8 px-4 rounded-lg shadow hover:shadow-xl transition group">
                 <div class="text-4xl mb-2">🗂️</div>
                 <h4 class="text-xl font-semibold mb-2">Gérer les catégories</h4>
@@ -76,6 +76,7 @@
                         </tr>
                     </thead>
                     <tbody >
+                        @foreach($users as $user)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
@@ -83,8 +84,8 @@
                                         <img class="h-10 w-10 rounded-full" src="" alt="">
                                     </div>
                                     <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">Nom d'utilisateur</div>
-                                        <div class="text-sm text-gray-500">email.utilisateur@example.com</div>
+                                        <div class="text-sm font-medium text-gray-900">{{ $user->name }}</div>
+                                        <div class="text-sm text-gray-500">{{ $user->email }}</div>
                                     </div>
                                 </div>
                             </td>
@@ -92,11 +93,12 @@
                                 <span class="px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-700">Artiste</span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">25</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">27/04/2025</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->created_at }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
                                
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -104,3 +106,4 @@
     </section>
 
 </div>
+<x-footer/>

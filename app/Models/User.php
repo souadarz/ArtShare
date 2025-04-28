@@ -23,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'status',
+        'role',
+        // 'picture'
     ];
 
     /**
@@ -62,5 +65,15 @@ class User extends Authenticatable
 
     public function tutoriels(){
         return $this->hasMany(Tutoriel::class);
+    }
+
+    public function artist()
+    {
+        return $this->hasOne(Artist::class);
+    }
+
+    public function showMessageProfile(){
+        $artist = $this->artist;
+        return($this->role == 'artiste' && $artist == null);
     }
 }
