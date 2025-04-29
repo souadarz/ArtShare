@@ -31,7 +31,7 @@
 <main class="container mx-auto px-4 py-10">
     <section class="mb-12 flex flex-col md:flex-row items-center justify-between">
         <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
-            <h2 class="text-4xl font-bold mb-4">Mon Profil ArtShare</h2>
+            <h2 class="text-4xl font-bold mb-4">Mon Profil</h2>
             <p class="text-lg text-gray-600 mb-6">Personnalisez votre expérience et partagez qui vous êtes avec le monde entier.</p>
             <!-- <button class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">
           Modifier mon profil
@@ -42,13 +42,12 @@
                 <img src="/api/placeholder/400/400" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div
                     class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
-                    <span class="text-xl">✏️</span>
                 </div>
             </div>
         </div>
     </section>
     <!-- selection du role-->
-    <section class="mb-10">
+    <!-- <section class="mb-10">
         <div class="flex justify-center">
             <div class="inline-flex bg-white rounded-full shadow-md p-1 border border-gray-100">
                 <button id="userRoleBtn"
@@ -63,9 +62,10 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <form class="profileForm">
+    <form class="profileForm" action="{{ route('profile.store') }} " method="POST">
+        @csrf
         <div class="space-y-8">
             <div class="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
                 <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
@@ -78,32 +78,34 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nom complet</label>
                         <input type="text" name="name"
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
-                            placeholder="Votre nom" value="">
+                            placeholder="Votre nom" value="{{ $user->name }}">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                         <input type="email" name="email"
                             class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
-                            placeholder="votre.email@example.com" value="">
+                            placeholder="votre.email@example.com" value="{{ $user->email }}">
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Biographie</label>
-                    <textarea name="biography" rows="4"
-                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
-                        placeholder="Partagez quelques informations sur vous..."></textarea>
-                </div>
             </div>
 
             <!-- info pour l'artiste -->
             <div id="artistSection" class="hidden space-y-8">
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Biographie</label>
+                    <textarea name="biographie" rows="4"
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
+                        placeholder="Partagez quelques informations sur vous..."></textarea>
+                </div>
+
                 <div class="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800 flex items-center">
                         <i data-feather="map" class="mr-3 text-pink-600"></i>
                         Parcours artistique
                     </h2>
-                    <textarea name="journey" rows="4"
+                    <textarea name="parcoursArtistique" rows="4"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition"
                         placeholder="Décrivez votre parcours en tant qu'artiste..."></textarea>
                 </div>
@@ -113,7 +115,7 @@
                         <i data-feather="feather" class="mr-3 text-purple-600"></i>
                         Style artistique
                     </h2>
-                    <textarea name="style" rows="4"
+                    <textarea name="styleArtistique" rows="4"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
                         placeholder="Décrivez votre style artistique..."></textarea>
                 </div>
@@ -143,31 +145,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         feather.replace();
 
-        const userRoleBtn = document.getElementById('userRoleBtn');
-        const artistRoleBtn = document.getElementById('artistRoleBtn');
         const artistSection = document.getElementById('artistSection');
         const profileForm = document.getElementById('profileForm');
 
-        userRoleBtn.addEventListener('click', function() {
-            userRoleBtn.classList.add('bg-art-gradient', 'text-white');
-            userRoleBtn.classList.remove('text-gray-700', 'hover:bg-gray-100');
+        // Variable PHP injectée en JavaScript
+        let userRole = @JSON($user);
+        console.log(userRole.role);
 
-            artistRoleBtn.classList.remove('bg-art-gradient', 'text-white');
-            artistRoleBtn.classList.add('text-gray-700', 'hover:bg-gray-100');
-
-            artistSection.classList.add('hidden');
-        });
-
-        artistRoleBtn.addEventListener('click', function() {
-            artistRoleBtn.classList.add('bg-art-gradient', 'text-white');
-            artistRoleBtn.classList.remove('text-gray-700', 'hover:bg-gray-100');
-
-            userRoleBtn.classList.remove('bg-art-gradient', 'text-white');
-            userRoleBtn.classList.add('text-gray-700', 'hover:bg-gray-100');
-
+        if (userRole.role == 'artiste') {
+            // profileForm.classList.remove('hidden');
             artistSection.classList.remove('hidden');
-            profileForm.classList.remove('hidden');
-        });
+
+        } else if (userRole.role == 'utilisateur') {
+            artistSection.classList.add('hidden');
+            profileForm.classList.add('hidden');
+        }
     });
 </script>
 <x-footer />

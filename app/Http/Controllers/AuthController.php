@@ -31,9 +31,18 @@ class AuthController extends Controller
             ];
         }
 
+        $role = $user->role;
+        // dd($role);
         Auth::login($user);
-        $request->session()->regenerate();
-        return redirect('/dashboardArtist');
+        $request->session()->regenerate(); 
+        if ($role == 'admin'){
+            return redirect('/dashboardAdamin');
+        }else if($role == 'artiste'){
+            return redirect('/dashboardArtist');
+        }else{
+            return redirect('/');
+        }
+            
     }
 
     public function register(Request $request)
@@ -41,19 +50,21 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|max:255|string',
             'email' => 'required|email|string|unique:users',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'role' => 'required|string|in:artiste,utilisateur',
+            'picture' => 'nullable|string|image:mimes:jpeg,png,jpg'
         ]);
-        // dd($request);
 
-        $FirstUser = User::count() === 0;
-        $role =  $FirstUser ? 'admin' : 'user';
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'status' => 'actif',
+            'role' => $request->role,
+            'picture' => $request->picture
         ]);
-
-        return redirect('/dashboardArtist');
+        
+        return redirect('/login');
     }
 
     public function logout(Request $request)

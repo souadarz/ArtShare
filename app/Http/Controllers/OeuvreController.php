@@ -18,12 +18,6 @@ class OeuvreController extends Controller
         return view('pageDesŒuvres', compact('oeuvres'));
     }
 
-    public function pageDashbordArtist () {
-        $user = Auth::user();
-        // dd($user);
-        return view('dashboardArtist', compact('user'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -118,6 +112,6 @@ class OeuvreController extends Controller
     {
        $oeuvre = Oeuvre::findOrFail($id);
        $oeuvre->delete();
-       return redirect(route('oeuvreOfArtist'));
+       return redirect(route('oeuvresDartist'));
     }
 }

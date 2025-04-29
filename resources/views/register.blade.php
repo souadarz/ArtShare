@@ -21,9 +21,9 @@
             <form action="/register" method="POST">
                 @csrf
                 <div>
-                    <label class="block text-gray-900 mb-2">Name</label>
+                    <label class="block text-gray-900 mb-2">Nom complét</label>
                     <input 
-                        type="text" placeholder="Enter your name" name="name"
+                        type="text" placeholder="entrer to nom complét" name="name"
                         class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
                         @error('name')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -31,9 +31,18 @@
                 </div>
 
                 <div>
-                    <label class="block text-gray-900 mb-2 mt-6">Email address</label>
+                    <label class="block text-gray-900 mb-2 mt-6">Role</label>
+                    <select name="role" id="role" class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        <option value="">Choisir un role</option>
+                        <option value="artiste">Artiste</option>
+                        <option value="utilisateur">Utilisateur</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-gray-900 mb-2 mt-6">Addresse email</label>
                     <input 
-                        type="email" placeholder="Enter your email" name="email"
+                        type="email" placeholder="Entrer ton email" name="email"
                         class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
                         @error('email')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -42,11 +51,11 @@
 
                 <div>
                     <div class="flex justify-between items-center mb-2 mt-6">
-                        <label class="text-gray-900">Password</label>
+                        <label class="text-gray-900">Mot de pass</label>
                         <!-- <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a> -->
                     </div>
                     <input 
-                        type="password" placeholder="Enter your password" name="password"
+                        type="password" placeholder="Entrer ton mot de pass" name="password"
                         class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         @error('password')
                             <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
@@ -55,7 +64,7 @@
 
                 <div class="mt-16">
                     <button type="submit" class="w-full bg-indigo-600 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
-                        Signup
+                        S'inscrire
                     </button>
                 </div>
 

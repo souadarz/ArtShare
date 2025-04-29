@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
@@ -24,19 +26,25 @@ Route::get('/dashboard', function () {
 Route::get('/home', function () {
     return view('home');
 });
-Route::get('/profile', function () {
-    return view('profile');
-});
 
-Route::get('/tutoriels', function () {
-    return view('tutoriels');
-});
+
 
 Route::get('/notreVision', function () {
     return view('notreVision');
 });
 
-Route::get('/dashboardArtist',[OeuvreController::class, 'pageDashbordArtist']);
+Route::post('/artistProfile/store',[ArtistController::class, 'store'])->name('profile.store');
+Route::get('/profile',[ArtistController::class, 'profile'])->name('profile');
+// Route::middleware(['auth'])
+Route::get('/dashboardAdamin',[AdminController::class, 'index'])->name('dashboardAdmin.index')->middleware('auth');
+Route::get('/users/create',[AdminController::class, 'create'])->name('users.create');
+Route::post('/users/store',[AdminController::class, 'store'])->name('users.store');
+Route::delete('/users/destroy/{id}',[AdminController::class, 'destroy'])->name('users.destroy');
+Route::post('/users/changeStatus/{user}',[AdminController::class, 'changeUserStatus'])->name('users.changeUserStatus');
+
+Route::get('/dashboardArtist',[ArtistController::class, 'index']);
+
+
 Route::get('/pageDesŒuvres',[OeuvreController::class, 'index'])->name('oeuvre.index');
 Route::get('/createOeuvre',[OeuvreController::class, 'create'])->name('oeuvre.create');
 Route::get('/oeuvres/{id}', [OeuvreController::class, 'show'])->name('detailsŒuvres');
