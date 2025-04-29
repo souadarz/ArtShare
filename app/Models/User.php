@@ -51,7 +51,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function oeuvre(){
+    public function oeuvres(){
         return $this->hasMany(Oeuvre::class);
     }
 

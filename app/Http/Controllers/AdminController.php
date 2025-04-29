@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Oeuvre;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        // $users = User::all();
+        $users = User::with('oeuvres')->get();
         $oeuvres = Oeuvre::with('comments');
         $categories = Category::all();
         return view('dashboardAdmin', compact('users','oeuvres','categories'));
@@ -25,7 +27,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('createUser');
     }
 
     /**
@@ -33,7 +35,22 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'email' => 'required|email|string|unique:users',
+            'password' => 'required|string',
+            'role' => 'required|string|in:artiste,utilisateur',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'status' => 'actif',
+            'role' => $request->role,
+        ]);
+        
+        return redirect('/dashboardAdamin');
     }
 
     /**
@@ -65,6 +82,18 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::where('id',$id)->first();
+        $user->delete();
+        return redirect()->back();
+    }
+
+    public function changeUserStatus(Request $request, User $user){
+        $newStatuses = [
+            'actif' => 'bloque',
+            'bloque' => 'actif'
+        ];
+        $user->update(['status'=> $newStatuses[$user->status]]);
+        return redirect()->back();
+
     }
 }

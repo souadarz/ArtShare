@@ -15,14 +15,14 @@
         </div>
     </section>
 
-       <!-- statistiques -->
+    <!-- statistiques -->
     <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
             <h3 class="text-2xl font-semibold text-purple-700">{{ $users->count() }}</h3>
             <p class="text-gray-500 mt-2">Nombres d'utilisateurs</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
-            <h3 class="text-2xl font-semibold text-pink-600">230</h3>
+            <h3 class="text-2xl font-semibold text-pink-600">{{ $users->where('role','artiste')->count() }}</h3>
             <p class="text-gray-500 mt-2">Nonmbres d'attistes</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
@@ -38,7 +38,7 @@
     <section class="mb-12">
         <h3 class="text-2xl font-bold mb-6">Actions Rapides</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <a href="#"
+            <a href="{{ route('users.create') }}"
                 class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white text-center py-8 px-4 rounded-lg shadow-lg hover:shadow-xl transition group">
                 <div class="text-4xl mb-2">👤</div>
                 <h4 class="text-xl font-semibold mb-2">Ajouter un utilisateur</h4>
@@ -58,7 +58,7 @@
             </a>
         </div>
     </section>
-    
+
     <section class="mb-12">
         <div class="flex justify-between items-center mb-6">
             <h3 class="text-2xl font-bold">Gestion des Utilisateurs</h3>
@@ -72,10 +72,11 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Œuvres</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date d'inscription</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach($users as $user)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -92,10 +93,22 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="px-2 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-700">Artiste</span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">25</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->oeuvres->count() }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->created_at }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->status }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
-                               
+                                <div class="flex space-x-2">
+                                    <!-- <a href="{{ route('users.changeUserStatus', $user) }}" class="text-purple-500 hover:text-purple-700">Changer Status</a> -->
+                                    <form action="{{ route('users.changeUserStatus', $user) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="text-purple-500 hover:text-purple-700">Changer Status</button>
+                                    </form>
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('voulez vous supprimer cet utilisateur ?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-pink-500 hover:text-pink-700">Supprimer</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -106,4 +119,4 @@
     </section>
 
 </div>
-<x-footer/>
+<x-footer />

@@ -37,6 +37,10 @@ Route::post('/artistProfile/store',[ArtistController::class, 'store'])->name('pr
 Route::get('/profile',[ArtistController::class, 'profile'])->name('profile');
 // Route::middleware(['auth'])
 Route::get('/dashboardAdamin',[AdminController::class, 'index'])->name('dashboardAdmin.index')->middleware('auth');
+Route::get('/users/create',[AdminController::class, 'create'])->name('users.create');
+Route::post('/users/store',[AdminController::class, 'store'])->name('users.store');
+Route::delete('/users/destroy/{id}',[AdminController::class, 'destroy'])->name('users.destroy');
+Route::post('/users/changeStatus/{user}',[AdminController::class, 'changeUserStatus'])->name('users.changeUserStatus');
 
 Route::get('/dashboardArtist',[ArtistController::class, 'index']);
 

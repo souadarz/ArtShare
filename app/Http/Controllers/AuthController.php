@@ -52,7 +52,7 @@ class AuthController extends Controller
             'email' => 'required|email|string|unique:users',
             'password' => 'required|string',
             'role' => 'required|string|in:artiste,utilisateur',
-            'picture' => 'string|image:mimes:jpeg,png,jpg'
+            'picture' => 'nullable|string|image:mimes:jpeg,png,jpg'
         ]);
 
         $user = User::create([
