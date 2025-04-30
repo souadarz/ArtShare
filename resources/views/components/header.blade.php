@@ -20,11 +20,11 @@
 
         <nav>
             <ul class="flex space-x-6">
-                <li><a href="#" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium" style="color: #781c1c;">Accueil</a></li>
+                <li><a href="/" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium" style="color: #781c1c;">Accueil</a></li>
                 <li><a href="{{ route('oeuvre.index') }}" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Galerie</a></li>
                 <li><a href="#" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Artistes</a></li>
-                <li><a href="#" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Collections</a></li>
-                <li><a href="#" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Contact</a></li>
+                <li><a href="{{ route('tutoriels.index') }}" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Tutoriels</a></li>
+                <li><a href="/notreVision" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Notre Vision</a></li>
             </ul>
         </nav>
         @guest

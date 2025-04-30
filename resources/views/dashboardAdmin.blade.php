@@ -8,9 +8,14 @@
         </div>
         <div class="md:w-1/3 flex justify-center">
             <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-200">
+                @if(!empty($user->picture))
                 <img src="" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
                 </div>
+                @else
+                <img src="https://avatar.iran.liara.run/public/girl" alt="Profile"
+                    class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
+                @endif
             </div>
         </div>
     </section>

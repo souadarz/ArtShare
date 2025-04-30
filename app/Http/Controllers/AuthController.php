@@ -52,7 +52,6 @@ class AuthController extends Controller
             'email' => 'required|email|string|unique:users',
             'password' => 'required|string',
             'role' => 'required|string|in:artiste,utilisateur',
-            'picture' => 'nullable|string|image:mimes:jpeg,png,jpg'
         ]);
 
         $user = User::create([
@@ -61,7 +60,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'status' => 'actif',
             'role' => $request->role,
-            'picture' => $request->picture
         ]);
         
         return redirect('/login');

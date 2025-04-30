@@ -15,6 +15,7 @@ class OeuvreController extends Controller
     public function index()
     {
         $oeuvres = Oeuvre::all();
+        $oeuvres = Oeuvre::paginate(3);
         return view('pageDesŒuvres', compact('oeuvres'));
     }
 
@@ -39,7 +40,7 @@ class OeuvreController extends Controller
             'category_id'=> 'required|integer',
             'image'=> 'required|image|mimes:jpeg,png,jpg'
         ]);
-        // dd('test');
+
         $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
         $oeuvre = Oeuvre::create([
             'title' => $request->title,

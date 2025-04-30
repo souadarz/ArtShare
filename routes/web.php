@@ -20,12 +20,12 @@ Route::get('/register', function () {
 Route::post('/register',[AuthController::class, 'register']);
 Route::post('/login',[AuthController::class, 'login']);
 Route::post('/logout',[AuthController::class, 'logout']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 
 
@@ -33,16 +33,16 @@ Route::get('/notreVision', function () {
     return view('notreVision');
 });
 
-Route::post('/artistProfile/store',[ArtistController::class, 'store'])->name('profile.store');
-Route::get('/profile',[ArtistController::class, 'profile'])->name('profile');
-// Route::middleware(['auth'])
+Route::get('/dashboardArtist',[ArtistController::class, 'showDashboardArtist'])->name('dashboardArtist');
+Route::post('/artistProfile/store',[ArtistController::class, 'storeOrUpdate'])->name('profile.storeOrUpdate');
+Route::get('/profile/{id}',[ArtistController::class, 'showProfileArtist'])->name('profile');
+
+
 Route::get('/dashboardAdamin',[AdminController::class, 'index'])->name('dashboardAdmin.index')->middleware('auth');
 Route::get('/users/create',[AdminController::class, 'create'])->name('users.create');
 Route::post('/users/store',[AdminController::class, 'store'])->name('users.store');
 Route::delete('/users/destroy/{id}',[AdminController::class, 'destroy'])->name('users.destroy');
 Route::post('/users/changeStatus/{user}',[AdminController::class, 'changeUserStatus'])->name('users.changeUserStatus');
-
-Route::get('/dashboardArtist',[ArtistController::class, 'index']);
 
 
 Route::get('/pageDesŒuvres',[OeuvreController::class, 'index'])->name('oeuvre.index');
@@ -52,7 +52,7 @@ Route::get('/MesOeuvres',[OeuvreController::class, 'getoeuvresDartist'])->name('
 Route::get('/editOeuvre/{id}',[OeuvreController::class, 'edit'])->name('oeuvre.edit');
 Route::post('/updateOeuvre/{oeuvre}',[OeuvreController::class, 'update'])->name('oeuvre.update');
 Route::get('/deleteOeuvre/{id}',[OeuvreController::class, 'destroy'])->name('oeuvre.delete');
-Route::post('/storeOeuvre',[OeuvreController::class, 'store'])->name('oeuvre.store')->middleware('auth');
+Route::post('/storeOeuvre',[OeuvreController::class, 'store'])->name('oeuvre.store');
 
 
 Route::post('/like/{oeuvre}',[LikeController::class, 'store'])->name('like.store');
@@ -61,12 +61,12 @@ Route::post('/comment/{oeuvre}',[CommentController::class, 'store'])->name('comm
 
 
 Route::get('/categories',[CategoryController::class, 'index'])->name('categories.index');
-// Route::get('/Categories/create',[CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories/store',[CategoryController::class, 'store'])->name('categories.store');
 Route::post('/categories/update/{category}',[CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/destroy/{category}',[CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
+Route::get('/tutoriels',[TutorielController::class, 'index'])->name('tutoriels.index');
 Route::get('/tutoriels/create',[TutorielController::class, 'create'])->name('tutoriels.create');
 Route::get('/MesTutoriels',[TutorielController::class, 'getTutorielDartist'])->name('tutorielsDartist');
 Route::post('/tutoriels/store',[TutorielController::class, 'store'])->name('tutoriels.store');

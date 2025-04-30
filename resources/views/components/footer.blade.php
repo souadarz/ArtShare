@@ -12,10 +12,11 @@
                 <h3 class="text-lg font-semibold mb-4">NAVIGATION</h3>
                 <nav>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition">Accueil</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition">Galerie</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition">Artistes</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition">Collections</a></li>
+                        <li><a href="/" class="text-gray-300 hover:text-white transition">Accueil</a></li>
+                        <li><a href="{{ route('oeuvre.index') }}" class="text-gray-300 hover:text-white transition">Galerie</a></li>
+                        <li><a href="" class="text-gray-300 hover:text-white transition">Artistes</a></li>
+                        <li><a href="{{ route('tutoriels.index') }}" class="text-gray-300 hover:text-white transition">Tutoriels</a></li>
+                        <li><a href="/notreVision" class="text-gray-300 hover:text-white transition">Notre Vision</a></li>
                     </ul>
                 </nav>
             </div>

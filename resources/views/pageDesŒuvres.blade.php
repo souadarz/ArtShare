@@ -61,11 +61,12 @@
         </div>
 
         <!-- Pagination -->
-        <div class="flex justify-center mt-12 space-x-2">
+        <!-- <div class="flex justify-center mt-12 space-x-2">
             <button class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center">1</button>
             <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-purple-600 hover:text-purple-600">2</button>
             <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-purple-600 hover:text-purple-600">3</button>
             <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-purple-600 hover:text-purple-600">...</button>
-        </div>
+        </div> -->
+        {{ $oeuvres->links() }}
     </div>
 <x-footer/>

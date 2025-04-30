@@ -15,7 +15,7 @@ class TutorielController extends Controller
     public function index()
     {
         $tutoriels = Tutoriel::all();
-        return view('tutoriels', compact('tutoriels'));
+        return view('tutoriel.tutoriels', compact('tutoriels'));
     }
 
     /**
