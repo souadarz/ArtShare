@@ -40,7 +40,7 @@
             @foreach($oeuvres as $oeuvre)
             <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <div class="aspect-w-4 aspect-h-3">
-                    <img src="{{ Storage::url($oeuvre->image) }}" alt="image d'oeuvre" 
+                    <img src="storage/images/{{ $oeuvre->image }}" alt="image d'oeuvre" 
                          class="w-full h-full object-cover">
                 </div>
                 <div class="p-6">
@@ -50,23 +50,13 @@
                             <p class="text-pink-400 font-bold py-2">@ {{ $oeuvre->user->name }}</p>
                             <a href="{{ route('detailsŒuvres', $oeuvre->id) }}" class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">Voir détails</a>
                         </div>
-                        <!-- <button class="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-colors mt-6">
-                            Voir détails
-                        </button> -->
+                      
                     </div>
                 </div>
             </div>
             @endforeach
 
         </div>
-
-        <!-- Pagination -->
-        <!-- <div class="flex justify-center mt-12 space-x-2">
-            <button class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center">1</button>
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-purple-600 hover:text-purple-600">2</button>
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-purple-600 hover:text-purple-600">3</button>
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:border-purple-600 hover:text-purple-600">...</button>
-        </div> -->
         {{ $oeuvres->links() }}
     </div>
 <x-footer/>

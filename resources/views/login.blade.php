@@ -32,7 +32,7 @@
                 <div>
                     <div class="flex justify-between items-center mb-2 mt-8">
                         <label class="text-gray-900">Password</label>
-                        <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a>
+                        <!-- <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a> -->
                     </div>
                     <input 
                         type="password" placeholder="Enter your password" name="password"

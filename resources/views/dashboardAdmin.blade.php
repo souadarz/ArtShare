@@ -28,7 +28,7 @@
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
             <h3 class="text-2xl font-semibold text-pink-600">{{ $users->where('role','artiste')->count() }}</h3>
-            <p class="text-gray-500 mt-2">Nonmbres d'attistes</p>
+            <p class="text-gray-500 mt-2">Nombres d'attistes</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
             <h3 class="text-2xl font-semibold text-purple-600">{{ $oeuvres->count() }}</h3>

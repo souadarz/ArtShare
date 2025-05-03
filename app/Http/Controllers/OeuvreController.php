@@ -15,7 +15,7 @@ class OeuvreController extends Controller
     public function index()
     {
         $oeuvres = Oeuvre::all();
-        $oeuvres = Oeuvre::paginate(3);
+        $oeuvres = Oeuvre::paginate(9);
         return view('pageDesŒuvres', compact('oeuvres'));
     }
 

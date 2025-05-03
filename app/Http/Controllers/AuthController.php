@@ -45,6 +45,10 @@ class AuthController extends Controller
             
     }
 
+    public function showRegister(){
+        return view('register');
+    }
+
     public function register(Request $request)
     {
         $request->validate([
@@ -67,8 +71,6 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
