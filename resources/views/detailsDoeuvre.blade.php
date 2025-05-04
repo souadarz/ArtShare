@@ -2,31 +2,27 @@
 <div class="bg-gray-100 text-gray-900">
     <div class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-            <div class="relative group">
-                <img src="{{ Storage::url($oeuvre->image) }}" alt="image de l'œuvre"
-                    class="w-full h-auto rounded-lg shadow-lg transform transition duration-300 group-hover:scale-105">
+            <div>
+                <div class="relative group">
+                    <img src="{{ Storage::url($oeuvre->image) }}" alt="image de l'œuvre"
+                        class="w-full h-auto rounded-lg shadow-lg transform transition duration-300 group-hover:scale-105">
+                </div>
+                <div>
+                    <h1 class="text-4xl font-bold text-gray-900 mt-6">{{ $oeuvre->title }}</h1>
+                    <p class="text-lg text-gray-600 mt-4">par <a href="#" class="text-purple-600 hover:underline">{{ $oeuvre->user->name }}</a></p>
+                </div>
             </div>
 
             <div>
                 <div class="flex justify-between">
-                    <h1 class="text-4xl font-bold text-gray-900">{{ $oeuvre->title }}</h1>
-                    <span class="bg-pink-100 text-[#ec4899] px-3 py-1 rounded-full text-sm">{{ $oeuvre->category }}</span>
+                    <!-- <h1 class="text-4xl font-bold text-gray-900">{{ $oeuvre->title }}</h1> -->
+                     <h2 class="text-xl font-bold text-gray-900">Description</h2>
+                    <span class="bg-pink-100 text-[#ec4899] px-3 py-1 rounded-full text-sm">{{ $oeuvre->category->name }}</span>
                 </div>
-                <p class="text-lg text-gray-600 mt-2">par <a href="#" class="text-purple-600 hover:underline">{{ $oeuvre->user->name }}</a></p>
+                <!-- <p class="text-lg text-gray-600 mt-2">par <a href="#" class="text-purple-600 hover:underline">{{ $oeuvre->user->name }}</a></p> -->
                 <p class="mt-4 text-gray-700">{{ $oeuvre->description }}</p>
 
-                <!-- <div class="mt-6 flex items-center space-x-4">
-                        <span class="text-xl font-semibold text-gray-800">Prix : 1 200 €</span>
-                        <button class="px-6 py-2 bg-gradient-to-tr from-pink-500 to-purple-700 text-white rounded-full shadow-lg hover:opacity-90 transition">Acheter</button>
-                    </div> -->
                 <div class="mt-6 flex space-x-4">
-                    <button class="flex items-center px-4 py-2 text-gray-700 border border-gray-300 rounded-full hover:bg-gray-200 transition">
-                        ❤️ Ajouter aux favoris
-                    </button>
-                    <!-- <button class="flex items-center px-4 py-2 text-gray-700 border border-gray-300 rounded-full hover:bg-gray-200 transition">
-                        🔄 Partager
-                    </button> -->
                     <form action="{{ route('like.store', $oeuvre) }} " method="POST">
                         @csrf
                         @if(session('likePink') === true)
@@ -48,8 +44,8 @@
                         @endif
                     </form>
                 </div>
-                <!-- Section Commentaires -->
-                <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-6">Commentaires</h2>
+
+                <h2 class=" font-bold text-gray-900 mt-12 mb-6">Commentaires</h2>
                 <div class="bg-white p-6 rounded-lg shadow-md">
                     <div class="space-y-4">
                         @foreach($oeuvre->comments->sortByDesc('created_at') as $comment)
@@ -71,30 +67,19 @@
             </div>
         </div>
 
-        <!-- Section œuvres similaires -->
         <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-6">Œuvres Similaires</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @foreach($oeuvreSimilaires as $oeuvre)
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="{{ asset('images/art-1.jpg') }}" alt="Art similaire" class="w-full h-48 object-cover">
+                <a href="" class="cursor-pointer">
+                    <img src="{{ Storage::url($oeuvre->image) }}" alt="oeuvre similaire" class="w-full h-48 object-cover">
+                </a>
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">Titre de l'œuvre</h3>
-                    <p class="text-sm text-gray-600">Nom de l'Artiste</p>
+                    <h3 class="text-lg font-semibold">{{ $oeuvre->title }}</h3>
+                    <p class="text-sm text-gray-600">{{ $oeuvre->user->name }}</p>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="{{ asset('images/art-2.jpg') }}" alt="Art similaire" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold">Titre de l'œuvre</h3>
-                    <p class="text-sm text-gray-600">Nom de l'Artiste</p>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <img src="{{ asset('images/art-3.jpg') }}" alt="Art similaire" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h3 class="text-lg font-semibold">Titre de l'œuvre</h3>
-                    <p class="text-sm text-gray-600">Nom de l'Artiste</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

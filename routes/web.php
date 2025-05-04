@@ -66,6 +66,7 @@ Route::middleware('auth:sanctum', 'role:admin')->group(function () {
     Route::delete('/categories/destroy/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 });
 
+Route::get('/artistes', [ArtistController::class, 'index'])->name('artists.index');
 
 Route::get('/pageDesŒuvres', [OeuvreController::class, 'index'])->name('oeuvre.index');
 Route::get('/oeuvres/{id}', [OeuvreController::class, 'show'])->name('detailsŒuvres');

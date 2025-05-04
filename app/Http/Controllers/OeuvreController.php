@@ -14,7 +14,7 @@ class OeuvreController extends Controller
      */
     public function index()
     {
-        $oeuvres = Oeuvre::all();
+        $oeuvres = Oeuvre::with('category')->get();
         $oeuvres = Oeuvre::paginate(9);
         return view('pageDesŒuvres', compact('oeuvres'));
     }
@@ -58,13 +58,14 @@ class OeuvreController extends Controller
      */
     public function show(string $id)
     {
-        $oeuvre = Oeuvre::with('comments')->where('id',$id)->first();
-        return view('detailsDoeuvre', compact('oeuvre'));
+        $oeuvre = Oeuvre::with('category')->where('id',$id)->first();
+        $oeuvreSimilaires = Oeuvre::where('id', '!=', $oeuvre->id)->where('user_id',$oeuvre->user_id)->take(3)->get();
+        return view('detailsDoeuvre', compact('oeuvre', 'oeuvreSimilaires'));
     }
 
     public function getoeuvresDartist(){
         $oeuvres = Oeuvre::where('user_id', Auth::id())->get();
-        return view('oeuvresDartist', compact('oeuvres'));
+        return view('artist.oeuvresDartist', compact('oeuvres'));
     }
 
     /**
@@ -88,8 +89,7 @@ class OeuvreController extends Controller
             'category_id'=> 'required|string',
             'image'=> 'image|mimes:jpeg,png,jpg'
         ]);
-        // $imagepath = $request->file('image') ? $request->file('image')->store('images', 'public') : null;
-
+        
         if ($request->hasFile('image')) {
             $imagepath = $request->file('image')->store('images', 'public');
             $oeuvre->image = $imagepath; 

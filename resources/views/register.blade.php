@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Inscription</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
     <div class="w-full max-w-5xl mx-auto flex">
         <div class="w-2/5 bg-white p-6 rounded-l-xl shadow-lg">
         <div class="flex justify-center">
-            <h1 class="text-3xl font-semibold mb-4 text-gray-900 ">Sign Up</h1>
+            <h1 class="text-3xl font-semibold mb-4 text-gray-900 ">S'inscrire</h1>
         </div>
         <div class="flex justify-center">
             <p class="text-gray-900 mb-10">Get Strated Now</p>
@@ -62,30 +62,16 @@
                         @enderror
                 </div>
 
-                <div class="mt-16">
+                <div class="mt-12">
                     <button type="submit" class="w-full bg-indigo-600 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
                         S'inscrire
                     </button>
                 </div>
-
-                <div class="text-center">
-                    <div class="flex items-center my-4">
-                        <div class="flex-grow border-t border-gray-300"></div>
-                        <span class="px-4 text-gray-500">or</span>
-                        <div class="flex-grow border-t border-gray-300"></div>
-                    </div>
-                    <div class="flex justify-center">
-                        <button class="w-48 mt-4 flex items-center justify-center border border-gray-300 py-1 rounded-lg hover:bg-gray-50">
-                            <img src="https://www.vectorlogo.zone/logos/google/google-icon.svg" alt="Google" class="w-5 h-5 mr-2">
-                            Sign in with Google
-                        </button>
-                    </div>
-                </div>
             </form>
 
-            <div class="mt-2 text-center">
-                <span class="text-gray-600">Have an account </span>
-                <a href="/login" class="text-indigo-800 hover:underline">Sign In</a>
+            <div class="mt-6 text-center">
+                <span class="text-gray-600">Vous avez déjà un compte </span>
+                <a href="/login" class="text-indigo-800 hover:underline">Se connecter</a>
             </div>
         </div>
 

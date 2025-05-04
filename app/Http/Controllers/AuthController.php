@@ -24,11 +24,9 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return [
-                'errors' => [
-                    'email' => ['The provided credentials are incorrect.']
-                ]
-            ];
+            return back()->withErrors([
+                'password' => 'Les identifiants sont incorrects.',
+            ]);
         }
 
         $role = $user->role;
@@ -38,7 +36,7 @@ class AuthController extends Controller
         if ($role == 'admin'){
             return redirect('/dashboardAdamin');
         }else if($role == 'artiste'){
-            return redirect('/dashboardArtist');
+            return redirect(route('dashboardArtist'));
         }else{
             return redirect('/');
         }

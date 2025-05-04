@@ -15,6 +15,13 @@ class ArtistController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function index(){
+
+        $users = User::where('role', 'artiste')->with('artist')->get();
+
+        return view('artist.artistes', compact('users'));
+    }
+
     public function showDashboardArtist()
     {
         $oeuvres = Oeuvre::where('user_id', Auth::id())->get();
@@ -25,7 +32,7 @@ class ArtistController extends Controller
             ->get()->sum('comments_count');
         $user = Auth::user();
 
-        return view('dashboardArtist', compact('user', 'oeuvres', 'totalComments', 'totalLikes'));
+        return view('artist.dashboardArtist', compact('user', 'oeuvres', 'totalComments', 'totalLikes'));
     }
 
 
