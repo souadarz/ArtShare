@@ -64,15 +64,15 @@
 
         <div class="hidden md:flex items-center justify-between w-full">
             <div class="flex items-center justify-between w-full">
-                <h1 class="text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent md:text-2xl">Art Share</h1>
+                <h1 class="lg:text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent text-2xl">Art Share</h1>
 
                 <nav class="mx-4 flex-grow">
-                    <ul class="flex justify-center space-x-6 md:space-x-3">
+                    <ul class="flex justify-center lg:space-x-6 space-x-3">
                         <li><a href="/" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium" style="color: #781c1c;">Accueil</a></li>
                         <li><a href="{{ route('oeuvre.index') }}" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Galerie</a></li>
                         <li><a href="{{ route('artists.index') }}" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Artistes</a></li>
                         <li><a href="{{ route('tutoriels.index') }}" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Tutoriels</a></li>
-                        <li><a href="/notreVision" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Notre-Vision</a></li>
+                        <li><a href="/notreVision" class="text-gray-600 hover:text-black transition-colors duration-300 font-medium">Notre Vision</a></li>
                     </ul>
                 </nav>
 
@@ -83,9 +83,9 @@
                     @endguest
                     @auth
                         @if(auth()->user()->role === "admin")
-                        <a href="{{ route('dashboardAdmin.index') }}" class="text-center py-3 px-1 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent border border-fuchsia-600">Dashboard</a>
+                        <a href="{{ route('dashboardAdmin.index') }}" class="text-center py-3 px-2 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent border border-fuchsia-600">Dashboard</a>
                         @elseif(auth()->user()->role === "artiste")
-                        <a href="{{ route('dashboardArtist') }}" class="text-center py-3 px-1 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent border border-fuchsia-600">Dashboard</a>
+                        <a href="{{ route('dashboardArtist') }}" class="text-center py-3 px-2 rounded-full bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent border border-fuchsia-600">Dashboard</a>
                         @endif
                     <form action="/logout" method="POST">
                     @csrf

@@ -55,12 +55,6 @@
                 <h4 class="text-xl font-semibold mb-2">Gérer les catégories</h4>
                 <p class="text-sm text-gray-600">Ajouter, modifier ou supprimer des catégories</p>
             </a>
-            <a href="#"
-                class="bg-white text-pink-600 border border-pink-200 text-center py-8 px-4 rounded-lg shadow hover:shadow-xl transition group">
-                <div class="text-4xl mb-2"></div>
-                <h4 class="text-xl font-semibold mb-2">Voir les commentaires</h4>
-                <p class="text-sm text-gray-600">Supprimer un commentaire</p>
-            </a>
         </div>
     </section>
 
@@ -86,9 +80,6 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    <div class="h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="" alt="">
-                                    </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">{{ $user->name }}</div>
                                         <div class="text-sm text-gray-500">{{ $user->email }}</div>

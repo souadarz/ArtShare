@@ -11,7 +11,7 @@
 <!-- <div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5"> -->
 <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
     <div class="w-full max-w-5xl mx-auto flex">
-        <div class="w-2/5 bg-white p-6 rounded-l-xl shadow-lg">
+        <div class="w-full lg:w-2/5 bg-white p-6 rounded-l-xl shadow-lg">
         <div class="flex justify-center">
             <h1 class="text-3xl font-semibold mb-4 text-gray-900 ">S'inscrire</h1>
         </div>
@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="w-3/5 bg-white rounded-r-xl p-8 flex items-center justify-center relative overflow-hidden">
+        <div class="hidden lg:flex w-3/5 bg-white rounded-r-xl p-8 items-center justify-center relative overflow-hidden">
             <!-- <div class="absolute z-10 text-center"> -->
                 <div class="flex justify-center items-center">
                     <svg width="590" height="330" viewBox="0 0 712 330" style="margin-right: 15px;" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

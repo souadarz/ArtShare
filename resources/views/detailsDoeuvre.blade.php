@@ -17,7 +17,7 @@
                 <div class="flex justify-between">
                     <!-- <h1 class="text-4xl font-bold text-gray-900">{{ $oeuvre->title }}</h1> -->
                      <h2 class="text-xl font-bold text-gray-900">Description</h2>
-                    <span class="bg-pink-100 text-[#ec4899] px-3 py-1 rounded-full text-sm">{{ $oeuvre->category->name }}</span>
+                    <span class="bg-pink-100 text-pink-500 px-3 py-2 rounded-full text-sm">{{ $oeuvre->category->name }}</span>
                 </div>
                 <!-- <p class="text-lg text-gray-600 mt-2">par <a href="#" class="text-purple-600 hover:underline">{{ $oeuvre->user->name }}</a></p> -->
                 <p class="mt-4 text-gray-700">{{ $oeuvre->description }}</p>
@@ -69,14 +69,14 @@
 
         <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-6">Œuvres Similaires</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            @foreach($oeuvreSimilaires as $oeuvre)
+            @foreach($oeuvreSimilaires as $oeuvreSimilaire)
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <a href="" class="cursor-pointer">
-                    <img src="{{ Storage::url($oeuvre->image) }}" alt="oeuvre similaire" class="w-full h-48 object-cover">
+                <a href="{{ route('detailsŒuvres', $oeuvreSimilaire->id) }}" class="cursor-pointer">
+                    <img src="{{ Storage::url($oeuvreSimilaire->image) }}" alt="oeuvre similaire" class="w-full h-48 object-cover">
                 </a>
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold">{{ $oeuvre->title }}</h3>
-                    <p class="text-sm text-gray-600">{{ $oeuvre->user->name }}</p>
+                    <h3 class="text-lg font-semibold">{{ $oeuvreSimilaire->title }}</h3>
+                    <p class="text-sm text-gray-600">{{ $oeuvreSimilaire->user->name }}</p>
                 </div>
             </div>
             @endforeach

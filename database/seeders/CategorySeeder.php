@@ -17,7 +17,8 @@ class CategorySeeder extends Seeder
             ['name' => 'Art abstrait'],
             ['name' => 'sculpture'],
             ['name' => 'photographie'],
-            ['name' => 'Art numerique'],
+            ['name' => 'Art numérique'],
+            ['name' => 'Peinture'],
         ];
 
         foreach ($categories as $category) {

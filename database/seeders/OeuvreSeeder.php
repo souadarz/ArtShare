@@ -41,4 +41,3 @@ class OeuvreSeeder extends Seeder
         }
     }
 }
-

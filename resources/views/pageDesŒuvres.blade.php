@@ -20,6 +20,9 @@
             <button class=" filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-purple-600 hover:text-purple-600 transition-colors" data-cat="Peinture">
                 Peinture
             </button>
+            <button class=" filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-purple-600 hover:text-purple-600 transition-colors" data-cat="Peinture">
+                Art abstrait
+            </button>
             <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-purple-600 hover:text-purple-600 transition-colors" data-cat="Sculpture">
                 Sculpture
             </button>

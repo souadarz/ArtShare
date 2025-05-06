@@ -1,33 +1,5 @@
 <x-header />
 
-<style>
-    :root {
-        --purple-700: #6D28D9;
-        --purple-600: #7C3AED;
-        --purple-200: #DDD6FE;
-        --pink-600: #DB2777;
-        --pink-500: #EC4899;
-        --pink-50: #FDF2F8;
-        --purple-50: #F5F3FF;
-    }
-
-    .art-gradient {
-        background: linear-gradient(to top right, var(--pink-500), var(--purple-700));
-    }
-
-    .bg-art-gradient {
-        background: linear-gradient(to top right, var(--pink-500), var(--purple-700));
-    }
-
-    .bg-art-gradient-light {
-        background: linear-gradient(to top right, var(--pink-50), var(--purple-50));
-    }
-
-    .art-quote-bg {
-        background: linear-gradient(to top right, var(--pink-50), var(--purple-50));
-    }
-</style>
-
 <main class="container mx-auto px-4 py-10">
     <section class="mb-12 flex flex-col md:flex-row items-center justify-between">
         <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
@@ -37,10 +9,18 @@
         </div>
         <div class="md:w-1/3 flex justify-center">
             <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-200">
-                <img src="{{ $user->artist?->picture ? asset('storage/' . $user->artist->picture) : asset('images/default-avatar.png') }}" alt="Photo de profil" class="object-cover w-full h-full" />
+                <!-- <img src="{{ $user->artist?->picture ? asset('storage/' . $user->artist->picture) : asset('images/https://avatar.iran.liara.run/public/girl') }}" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div
                     class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
+                </div> -->
+                @if(!empty($user->artist->picture))
+                <img src="{{ Storage::url($user->artist->picture) }}" alt="Photo de profil" class="object-cover w-full h-full" />
+                <div class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
                 </div>
+                @else
+                <img src="https://avatar.iran.liara.run/public/girl" alt="Profile"
+                    class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
+                @endif
             </div>
         </div>
     </section>
@@ -120,32 +100,11 @@
             <div class="flex justify-end pt-4">
                 <button type="submit"
                     class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white px-6 py-3 rounded-full hover:shadow-lg transition flex items-center">
-                    <i data-feather="save" class="mr-2 h-5 w-5"></i>
                     Enregistrer mon profil
                 </button>
             </div>
         </div>
     </form>
 </main>
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        feather.replace();
 
-        const artistSection = document.getElementById('artistSection');
-        const profileForm = document.getElementById('profileForm');
-
-        // Variable PHP injectée en JavaScript
-        let userRole = @JSON($user);
-        console.log(userRole.role);
-
-        if (userRole.role == 'artiste') {
-            // profileForm.classList.remove('hidden');
-            artistSection.classList.remove('hidden');
-
-        } else if (userRole.role == 'utilisateur') {
-            artistSection.classList.add('hidden');
-            profileForm.classList.add('hidden');
-        }
-    }); -->
-</script>
 <x-footer />
