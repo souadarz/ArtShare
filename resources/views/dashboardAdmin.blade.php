@@ -8,9 +8,14 @@
         </div>
         <div class="md:w-1/3 flex justify-center">
             <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-200">
+                @if(!empty($user->picture))
                 <img src="" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
                 </div>
+                @else
+                <img src="https://avatar.iran.liara.run/public/girl" alt="Profile"
+                    class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
+                @endif
             </div>
         </div>
     </section>
@@ -23,7 +28,7 @@
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
             <h3 class="text-2xl font-semibold text-pink-600">{{ $users->where('role','artiste')->count() }}</h3>
-            <p class="text-gray-500 mt-2">Nonmbres d'attistes</p>
+            <p class="text-gray-500 mt-2">Nombres d'attistes</p>
         </div>
         <div class="bg-white shadow-lg rounded-xl p-6 text-center border border-gray-100 hover:shadow-xl transition">
             <h3 class="text-2xl font-semibold text-purple-600">{{ $oeuvres->count() }}</h3>
@@ -50,12 +55,6 @@
                 <h4 class="text-xl font-semibold mb-2">Gérer les catégories</h4>
                 <p class="text-sm text-gray-600">Ajouter, modifier ou supprimer des catégories</p>
             </a>
-            <a href="#"
-                class="bg-white text-pink-600 border border-pink-200 text-center py-8 px-4 rounded-lg shadow hover:shadow-xl transition group">
-                <div class="text-4xl mb-2"></div>
-                <h4 class="text-xl font-semibold mb-2">Voir les commentaires</h4>
-                <p class="text-sm text-gray-600">Supprimer un commentaire</p>
-            </a>
         </div>
     </section>
 
@@ -81,9 +80,6 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    <div class="h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="" alt="">
-                                    </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">{{ $user->name }}</div>
                                         <div class="text-sm text-gray-500">{{ $user->email }}</div>

@@ -12,7 +12,7 @@
     <div class="m-8 rounded-lg w-[850px] mx-auto">
         <header class="bg-white shadow-md py-6 px-8 flex items-center justify-between">
             <h1 class="text-3xl font-bold bg-gradient-to-tr from-pink-500 to-purple-700 bg-clip-text text-transparent">Modifier un Tutoriel</h1>
-            <a href="/tutorielsDartist" class="text-sm text-purple-600 hover:underline">Retour au Dashboard</a>
+            <a href="{{ url()->previous() }}" class="text-sm text-purple-600 hover:underline">← Retour</a>
         </header>
 
         <main class="mx-auto">

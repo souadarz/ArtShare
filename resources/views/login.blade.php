@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Connection</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body class="font-inter bg-gray-50 flex items-center justify-center mt-10">
-<!-- <div class="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5"> -->
+
 <div class="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden" style="max-width:1000px">
     <div class="w-full max-w-5xl mx-auto flex">
-        <div class="w-2/5 bg-white p-6 rounded-l-xl shadow-lg">
+        <div class="w-full lg:w-2/5 bg-white p-6 rounded-l-xl shadow-lg">
         <div class="flex justify-center">
-            <h1 class="text-3xl font-semibold mb-4 text-gray-900 ">Login</h1>
+            <h1 class="text-3xl font-semibold mb-4 text-gray-900 ">Se Connecter</h1>
         </div>
-            <p class="text-gray-900 mb-10">Enter your Credentials to access your account</p>
+            <p class="text-gray-900 mb-10">Entrez vos identifiants pour accéder à votre compte</p>
 
             <form action="/login" method="POST">
                 @csrf
                 <div>
-                    <label class="block text-gray-900 mb-2">Email address</label>
+                    <label class="block text-gray-900 mb-2">Addresse email</label>
                     <input 
                         type="email" placeholder="Enter your email" name="email"
                         class="text-gray-900 w-full px-4 py-1 border rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
@@ -31,8 +31,8 @@
 
                 <div>
                     <div class="flex justify-between items-center mb-2 mt-8">
-                        <label class="text-gray-900">Password</label>
-                        <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a>
+                        <label class="text-gray-900">Mot de pass</label>
+                        <!-- <a href="#" class="text-blue-600 text-sm hover:underline">forgot password</a> -->
                     </div>
                     <input 
                         type="password" placeholder="Enter your password" name="password"
@@ -42,34 +42,23 @@
                         @enderror
                 </div>
 
-                <div class="mt-16">
+                <div class="mt-12">
                     <button type="submit" class="w-full bg-indigo-500 text-white py-1 rounded-lg hover:bg-indigo-700 transition">
-                        Login
+                        Se Connecter
                     </button>
                 </div>
 
-                <div class="text-center">
-                    <div class="flex items-center my-4">
-                        <div class="flex-grow border-t border-gray-300"></div>
-                        <span class="px-4 text-gray-500">or</span>
-                        <div class="flex-grow border-t border-gray-300"></div>
-                    </div>
-                    <div class="flex justify-center">
-                        <button class="w-48 mt-4 flex items-center justify-center border border-gray-300 py-1 rounded-lg hover:bg-gray-50">
-                            <img src="https://www.vectorlogo.zone/logos/google/google-icon.svg" alt="Google" class="w-5 h-5 mr-2">
-                            Sign in with Google
-                        </button>
-                    </div>
-                </div>
             </form>
 
-            <div class="mt-2 text-center">
-                <span class="text-gray-600">Don't have an account? </span>
-                <a href="/register" class="text-indigo-900 hover:underline">Sign Up</a>
+            <div class="mt-6 text-center">
+                <span class="text-gray-600">Vous n'avez pas de compte ? </span>
+                <a href="/register" class="text-indigo-900 hover:underline">S'inscrire</a>
             </div>
         </div>
 
-        <div class="w-3/5 bg-white rounded-r-xl p-8 flex items-center justify-center relative overflow-hidden">
+        <!-- <div class="hidden lg:flex w-3/5 bg-white rounded-r-xl p-8 items-center justify-center relative overflow-hidden "> -->
+        <div class="hidden lg:flex w-3/5 bg-white rounded-r-xl p-8 items-center justify-center relative overflow-hidden">
+
             <!-- <div class="absolute z-10 text-center"> -->
                 <div class="flex justify-center items-center">
                 <svg width="590" height="330" viewBox="0 0 712 330" style="margin-right: 15px;" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

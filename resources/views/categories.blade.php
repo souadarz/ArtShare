@@ -5,15 +5,17 @@
 
             <div class="mb-8 flex items-center justify-between">
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Gestion des Catégories</h2>
-                <button id="add_categorie_button" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-full transition cursur-pointer">
-                    + Ajouter Catégorie
-                </button>
-
+                <div>
+                    <button id="add_categorie_button" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-3 rounded-full transition cursur-pointer">
+                        + Ajouter Catégorie</button>
+                    <a href="/dashboardAdamin" class="text-sm text-purple-600 hover:underline">Retour au Dashboard</a>
+                </div>
             </div>
 
             <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 @foreach($categories as $category)
-                <div class="category_box flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-6 shadow hover:shadow-md transition" data-category-id="{{ $category->id }}">
+                <!-- <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow text-center p-8"> -->
+                <div class="flex flex-col justify-between rounded-lg border  bg-white p-6 shadow hover:shadow-xl transition" data-category-id="{{ $category->id }}">
                     <div class="flex justify-between items-start mb-6">
                         <button class="text-sm text-purple-500 hover:underline edit_category_button"
                             data-id="{{ $category->id }}"

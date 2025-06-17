@@ -1,70 +1,31 @@
 <x-header />
 
-<style>
-    :root {
-        --purple-700: #6D28D9;
-        --purple-600: #7C3AED;
-        --purple-200: #DDD6FE;
-        --pink-600: #DB2777;
-        --pink-500: #EC4899;
-        --pink-50: #FDF2F8;
-        --purple-50: #F5F3FF;
-    }
-
-    .art-gradient {
-        background: linear-gradient(to top right, var(--pink-500), var(--purple-700));
-    }
-
-    .bg-art-gradient {
-        background: linear-gradient(to top right, var(--pink-500), var(--purple-700));
-    }
-
-    .bg-art-gradient-light {
-        background: linear-gradient(to top right, var(--pink-50), var(--purple-50));
-    }
-
-    .art-quote-bg {
-        background: linear-gradient(to top right, var(--pink-50), var(--purple-50));
-    }
-</style>
-
 <main class="container mx-auto px-4 py-10">
     <section class="mb-12 flex flex-col md:flex-row items-center justify-between">
         <div class="md:w-2/3 text-center md:text-left mb-8 md:mb-0">
             <h2 class="text-4xl font-bold mb-4">Mon Profil</h2>
             <p class="text-lg text-gray-600 mb-6">Personnalisez votre expérience et partagez qui vous êtes avec le monde entier.</p>
-            <!-- <button class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">
-          Modifier mon profil
-        </button> -->
+            <a href="{{ route('dashboardArtist') }}" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Dashboard</a>
         </div>
         <div class="md:w-1/3 flex justify-center">
             <div class="relative w-40 h-40 rounded-full overflow-hidden border-4 border-purple-200">
-                <img src="/api/placeholder/400/400" alt="Photo de profil" class="object-cover w-full h-full" />
+                <!-- <img src="{{ $user->artist?->picture ? asset('storage/' . $user->artist->picture) : asset('images/https://avatar.iran.liara.run/public/girl') }}" alt="Photo de profil" class="object-cover w-full h-full" />
                 <div
                     class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
+                </div> -->
+                @if(!empty($user->artist->picture))
+                <img src="{{ Storage::url($user->artist->picture) }}" alt="Photo de profil" class="object-cover w-full h-full" />
+                <div class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
                 </div>
+                @else
+                <img src="https://avatar.iran.liara.run/public/girl" alt="Profile"
+                    class="absolute bottom-0 right-0 bg-gradient-to-tr from-pink-500 to-purple-700 rounded-full p-2 text-white">
+                @endif
             </div>
         </div>
     </section>
-    <!-- selection du role-->
-    <!-- <section class="mb-10">
-        <div class="flex justify-center">
-            <div class="inline-flex bg-white rounded-full shadow-md p-1 border border-gray-100">
-                <button id="userRoleBtn"
-                    class="flex items-center px-6 py-3 rounded-full bg-art-gradient text-white font-medium transition duration-300">
-                    <i data-feather="user" class="mr-2 h-5 w-5"></i>
-                    <span>Utilisateur</span>
-                </button>
-                <button id="artistRoleBtn"
-                    class="flex items-center px-6 py-3 rounded-full text-gray-700 font-medium hover:bg-gray-100 transition duration-300">
-                    <i data-feather="palette" class="mr-2 h-5 w-5"></i>
-                    <span>Artiste</span>
-                </button>
-            </div>
-        </div>
-    </section> -->
 
-    <form class="profileForm" action="{{ route('profile.store') }} " method="POST">
+    <form class="profileForm" action="{{ route('profile.storeOrUpdate') }} " method="POST" enctype="multipart/form-data">
         @csrf
         <div class="space-y-8">
             <div class="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
@@ -87,17 +48,22 @@
                             placeholder="votre.email@example.com" value="{{ $user->email }}">
                     </div>
                 </div>
+                <div>
+                    <label for="picture" class="block text-sm font-medium text-gray-700">Image personnelle</label>
+                    <input type="file" id="picture" name="picture" accept="image/*"
+                        class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-pink-100">
+                </div>
 
             </div>
 
             <!-- info pour l'artiste -->
-            <div id="artistSection" class="hidden space-y-8">
+            <div id="artistSection" class="space-y-8">
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Biographie</label>
                     <textarea name="biographie" rows="4"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
-                        placeholder="Partagez quelques informations sur vous..."></textarea>
+                        placeholder="Partagez quelques informations sur vous...">{{ $user->artist?->biographie }}</textarea>
                 </div>
 
                 <div class="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
@@ -107,7 +73,7 @@
                     </h2>
                     <textarea name="parcoursArtistique" rows="4"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition"
-                        placeholder="Décrivez votre parcours en tant qu'artiste..."></textarea>
+                        placeholder="Décrivez votre parcours en tant qu'artiste...">{{ $user->artist?->parcoursArtistique }}</textarea>
                 </div>
 
                 <div class="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
@@ -117,7 +83,7 @@
                     </h2>
                     <textarea name="styleArtistique" rows="4"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-purple-600 transition"
-                        placeholder="Décrivez votre style artistique..."></textarea>
+                        placeholder="Décrivez votre style artistique...">{{ $user->artist?->styleArtistique }}</textarea>
                 </div>
 
                 <div class="bg-white shadow-lg rounded-xl p-8 border border-gray-100">
@@ -127,39 +93,18 @@
                     </h2>
                     <textarea name="inspirations" rows="4"
                         class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-600 focus:border-pink-600 transition"
-                        placeholder="Qui ou quoi vous inspire dans votre art..."></textarea>
+                        placeholder="Qui ou quoi vous inspire dans votre art...">{{ $user->artist?->inspirations }}</textarea>
                 </div>
             </div>
 
             <div class="flex justify-end pt-4">
                 <button type="submit"
                     class="bg-gradient-to-tr from-pink-500 to-purple-700 text-white px-6 py-3 rounded-full hover:shadow-lg transition flex items-center">
-                    <i data-feather="save" class="mr-2 h-5 w-5"></i>
                     Enregistrer mon profil
                 </button>
             </div>
         </div>
     </form>
 </main>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        feather.replace();
 
-        const artistSection = document.getElementById('artistSection');
-        const profileForm = document.getElementById('profileForm');
-
-        // Variable PHP injectée en JavaScript
-        let userRole = @JSON($user);
-        console.log(userRole.role);
-
-        if (userRole.role == 'artiste') {
-            // profileForm.classList.remove('hidden');
-            artistSection.classList.remove('hidden');
-
-        } else if (userRole.role == 'utilisateur') {
-            artistSection.classList.add('hidden');
-            profileForm.classList.add('hidden');
-        }
-    });
-</script>
 <x-footer />

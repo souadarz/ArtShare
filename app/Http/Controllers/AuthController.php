@@ -24,11 +24,9 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return [
-                'errors' => [
-                    'email' => ['The provided credentials are incorrect.']
-                ]
-            ];
+            return back()->withErrors([
+                'password' => 'Les identifiants sont incorrects.',
+            ]);
         }
 
         $role = $user->role;
@@ -38,11 +36,15 @@ class AuthController extends Controller
         if ($role == 'admin'){
             return redirect('/dashboardAdamin');
         }else if($role == 'artiste'){
-            return redirect('/dashboardArtist');
+            return redirect(route('dashboardArtist'));
         }else{
             return redirect('/');
         }
             
+    }
+
+    public function showRegister(){
+        return view('register');
     }
 
     public function register(Request $request)
@@ -52,7 +54,6 @@ class AuthController extends Controller
             'email' => 'required|email|string|unique:users',
             'password' => 'required|string',
             'role' => 'required|string|in:artiste,utilisateur',
-            'picture' => 'nullable|string|image:mimes:jpeg,png,jpg'
         ]);
 
         $user = User::create([
@@ -61,7 +62,6 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
             'status' => 'actif',
             'role' => $request->role,
-            'picture' => $request->picture
         ]);
         
         return redirect('/login');
@@ -69,8 +69,6 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

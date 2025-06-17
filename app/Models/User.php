@@ -25,7 +25,6 @@ class User extends Authenticatable
         'password',
         'status',
         'role',
-        // 'picture'
     ];
 
     /**
@@ -74,6 +73,6 @@ class User extends Authenticatable
 
     public function showMessageProfile(){
         $artist = $this->artist;
-        return($this->role == 'artiste' && $artist == null);
+        return($this->role == 'artiste' && $artist === null);
     }
 }
